@@ -45,8 +45,8 @@ public class ResourceBar : MonoBehaviour
 
     private void Render()
     {
-        goldText.text      = $"💰 {_gold:N0}";
-        supplyText.text    = $"🎒 {_supply:N0}";
-        influenceText.text = $"⭐ {_influence:N0}";
+        goldText.text      = $"{_gold:N0}";
+        supplyText.text    = $"{_supply:N0}";
+        influenceText.text = $"{_influence:N0}";
     }
 }
