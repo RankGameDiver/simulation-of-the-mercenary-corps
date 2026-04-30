@@ -6,6 +6,10 @@ public interface IMercenary
     string Name { get; }
     int Stamina { get; }
     int Morale { get; }
+    int Strength { get; }      // 힘 (1–10)
+    int Agility { get; }       // 민첩 (1–10)
+    int Intelligence { get; }  // 지능 (1–10)
+    int Charming { get; }      // 매력 (1–10)
     string PersonalityType { get; }
     string CurrentAction { get; }
     bool IsIncapacitated { get; }
