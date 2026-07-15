@@ -13,5 +13,6 @@ public class MercenaryData : IMercenary
     public virtual bool IsIncapacitated => Stamina <= 0;
 
     public virtual void AssignAction(string actionId) { CurrentAction = actionId; }
+    public virtual void OnTurnStart() { }
     public virtual void OnTurnExecute() { }
 }

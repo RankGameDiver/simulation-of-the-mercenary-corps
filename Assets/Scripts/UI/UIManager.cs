@@ -52,6 +52,7 @@ public class UIManager : MonoBehaviour
     }
 
     private void OnMercenarySelected(IMercenary m) => mercenaryDetailPanel.Show(m);
+    
     private void OnMercenaryStateChanged(IMercenary m) {
         mercenaryListPanel.RefreshItem(m);
         if(mercenaryDetailPanel.CurrentMercenary?.Id == m.Id) {

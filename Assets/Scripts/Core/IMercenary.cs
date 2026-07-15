@@ -15,5 +15,6 @@ public interface IMercenary
     bool IsIncapacitated { get; }
 
     void AssignAction(string actionId); // 작업 할당
+    void OnTurnStart(); // 턴 시작 시 호출
     void OnTurnExecute(); // 턴 실행 시 호출
 }

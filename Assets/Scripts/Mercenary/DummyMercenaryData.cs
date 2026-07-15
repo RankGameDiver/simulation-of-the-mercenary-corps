@@ -27,6 +27,11 @@ public class DummyMercenaryData : MercenaryData
         CurrentAction = actionId;
     }
 
+    public override void OnTurnStart() {
+        // 이전 턴 행동 초기화 (새 턴 계획을 위해 비움)
+        CurrentAction = "대기";
+    }
+
     public override void OnTurnExecute() {
         // 턴마다 기력 소모 시뮬레이션
         Stamina -= 10;
@@ -35,11 +40,6 @@ public class DummyMercenaryData : MercenaryData
         if(CurrentAction == "대기") {
             CurrentAction = GetAutonomousAction();
         }
-
-        // 다음 턴 초기화
-        var executed = CurrentAction;
-        CurrentAction = "대기";
-        _ = executed; // 로그는 TurnManager가 처리
     }
 
     private string GetAutonomousAction() {

@@ -67,6 +67,11 @@ public class TurnManager : MonoBehaviour
         // 3. 다음 턴 준비
         CurrentTurn++;
         CurrentPhase = TurnPhase.Planning;
+
+        foreach(var mercenary in _mercenaries) {
+            mercenary.OnTurnStart();
+        }
+
         GameEvents.TurnStarted(CurrentTurn);
         GameEvents.PlanningPhaseStart();
         GameEvents.Log($"=== {CurrentTurn}턴 계획 단계 ===");
