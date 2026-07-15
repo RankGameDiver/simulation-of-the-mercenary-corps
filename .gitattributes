@@ -1,0 +1,48 @@
+# ===== Unity 병합 도구 설정 =====
+*.cs diff=csharp text
+
+# YAML 기반 Unity 에셋 - Smart Merge 적용, 줄바꿈 LF 고정
+*.unity merge=unityyamlmerge eol=lf
+*.prefab merge=unityyamlmerge eol=lf
+*.asset merge=unityyamlmerge eol=lf
+*.meta merge=unityyamlmerge eol=lf
+*.mat merge=unityyamlmerge eol=lf
+*.anim merge=unityyamlmerge eol=lf
+*.controller merge=unityyamlmerge eol=lf
+*.physicsMaterial2D merge=unityyamlmerge eol=lf
+*.physicMaterial merge=unityyamlmerge eol=lf
+
+# ===== 바이너리 파일 (diff 대상에서 제외, LFS 대상 후보) =====
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.tga binary
+*.psd binary
+*.tif binary
+*.gif binary
+*.exr binary
+*.hdr binary
+
+*.fbx binary
+*.obj binary
+*.blend binary
+
+*.wav binary
+*.mp3 binary
+*.ogg binary
+
+*.mp4 binary
+*.mov binary
+
+*.dll binary
+*.so binary
+*.a binary
+*.pdb binary
+
+*.ttf binary
+*.otf binary
+
+# ===== 기타 =====
+*.cginc text
+*.shader text
+*.compute text
