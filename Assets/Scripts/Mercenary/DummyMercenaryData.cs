@@ -17,6 +17,7 @@ public class DummyMercenaryData : MercenaryData
 
         Strength     = RollStat();
         Agility      = RollStat();
+        Health       = RollStat();
         Intelligence = RollStat();
         Charming     = RollStat();
     }

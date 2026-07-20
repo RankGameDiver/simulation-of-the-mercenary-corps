@@ -15,6 +15,13 @@ public class MercenaryDetailPanel : MonoBehaviour
     [SerializeField] private Slider moraleSlider;
     [SerializeField] private TextMeshProUGUI moraleLabel;
 
+    [Header("능력치")]
+    [SerializeField] private TextMeshProUGUI strengthText;
+    [SerializeField] private TextMeshProUGUI agilityText;
+    [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private TextMeshProUGUI intelligenceText;
+    [SerializeField] private TextMeshProUGUI charmingText;
+
     [Header("행동 지정")]
     [SerializeField] private TextMeshProUGUI currentActionText;
     [SerializeField] private Transform actionButtonContainer;
@@ -55,6 +62,14 @@ public class MercenaryDetailPanel : MonoBehaviour
         // 사기
         moraleSlider.value = m.Morale;
         moraleLabel.text = GetMoraleLabel(m.Morale);
+
+        // 능력치
+        strengthText.text = $"근력: {m.Strength}";
+        agilityText.text = $"민첩: {m.Agility}";
+        healthText.text = $"건강: {m.Health}";
+        
+        intelligenceText.text = $"지능: {m.Intelligence}";
+        charmingText.text = $"매력: {m.Charming}";
 
         // 현재 행동
         currentActionText.text = $"현재 행동: {m.CurrentAction}";

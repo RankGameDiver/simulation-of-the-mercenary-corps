@@ -8,6 +8,7 @@ public interface IMercenary
     int Morale { get; }
     int Strength { get; }      // 힘 (1–10)
     int Agility { get; }       // 민첩 (1–10)
+    int Health { get; }       // 건강 (1–10)
     int Intelligence { get; }  // 지능 (1–10)
     int Charming { get; }      // 매력 (1–10)
     string PersonalityType { get; }

@@ -4,8 +4,9 @@ public class MercenaryData : IMercenary
     public string Name { get; protected set; }
     public int Stamina { get; protected set; }
     public int Morale { get; protected set; }
-    public int Strength { get; protected set; }      // 힘 (1–10)
+    public int Strength { get; protected set; }      // 근력 (1–10)
     public int Agility { get; protected set; }       // 민첩 (1–10)
+    public int Health { get; protected set; }       // 체력 (1–10)
     public int Intelligence { get; protected set; }  // 지능 (1–10)
     public int Charming { get; protected set; }      // 매력 (1–10)
     public string PersonalityType { get; protected set; }

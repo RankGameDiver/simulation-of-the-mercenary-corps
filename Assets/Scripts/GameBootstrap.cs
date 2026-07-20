@@ -12,7 +12,7 @@ public class GameBootstrap : MonoBehaviour
             TurnManager.Instance.RegisterMercenary(m);
             Debug.Log($"[용병 생성] {m.Name} (Id: {m.Id})\n" +
                       $"  성격: {m.PersonalityType}\n" +
-                      $"  힘: {m.Strength} | 민첩: {m.Agility} | 지능: {m.Intelligence} | 매력: {m.Charming}");
+                      $"  힘: {m.Strength} | 민첩: {m.Agility} | 건강: {m.Health} | 지능: {m.Intelligence} | 매력: {m.Charming}");
         }
     }
 }
