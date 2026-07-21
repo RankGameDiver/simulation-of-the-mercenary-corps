@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MercenaryDetailPanel : MonoBehaviour
+public class MercenaryDetailPanel : PanelBase
 {
     [Header("기본 정보")]
     [SerializeField] private TextMeshProUGUI nameText;
@@ -27,28 +27,29 @@ public class MercenaryDetailPanel : MonoBehaviour
     [SerializeField] private Transform actionButtonContainer;
     [SerializeField] private GameObject actionButtonPrefab;
 
-    [Header("패널 루트")]
-    [SerializeField] private GameObject panelRoot;
-
     public IMercenary CurrentMercenary { get; private set; }
 
     // 행동 목록 (나중에 ScriptableObject 등으로 교체 가능)
     private static readonly string[] AvailableActions = { "훈련", "휴식", "독서", "감시", "시장 방문", "기술 연구", "전술 분석" };
 
-    void Start() {
-        panelRoot.SetActive(false);
+    protected override void Awake() {
+        base.Awake();
         BuildActionButtons();
     }
 
-    public void Show(IMercenary m) {
+    // 특정 용병을 표시하며 패널을 연다
+    // (PanelBase.Show()를 오버로드로 가리지 않도록 별도 이름을 사용)
+    public void ShowMercenary(IMercenary m) {
         CurrentMercenary = m;
-        panelRoot.SetActive(true);
         Render(m);
+        Show();
     }
 
-    public void Hide() {
-        CurrentMercenary = null;
-        panelRoot.SetActive(false);
+    protected override void OnVisibilityChanged(bool visible) {
+        // 숨겨지면 선택 상태도 해제
+        if(!visible) {
+            CurrentMercenary = null;
+        }
     }
 
     private void Render(IMercenary m) {

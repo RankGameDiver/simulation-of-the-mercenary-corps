@@ -51,12 +51,12 @@ public class UIManager : MonoBehaviour
         endTurnButton.interactable = false; // 실행 중 버튼 비활성화
     }
 
-    private void OnMercenarySelected(IMercenary m) => mercenaryDetailPanel.Show(m);
-    
+    private void OnMercenarySelected(IMercenary m) => mercenaryDetailPanel.ShowMercenary(m);
+
     private void OnMercenaryStateChanged(IMercenary m) {
         mercenaryListPanel.RefreshItem(m);
         if(mercenaryDetailPanel.CurrentMercenary?.Id == m.Id) {
-            mercenaryDetailPanel.Show(m);
+            mercenaryDetailPanel.ShowMercenary(m);
         }
     }
 }

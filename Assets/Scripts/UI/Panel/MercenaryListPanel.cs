@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 
-public class MercenaryListPanel : MonoBehaviour
+public class MercenaryListPanel : PanelBase
 {
     [Header("참조")]
     [SerializeField] private Transform itemContainer;

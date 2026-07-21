@@ -2495,6 +2495,7 @@ Transform:
   - {fileID: 1401066067}
   - {fileID: 709786242}
   - {fileID: 1548946397}
+  - {fileID: 1334495895}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &918857861
@@ -3324,6 +3325,7 @@ GameObject:
   - component: {fileID: 1120477867}
   - component: {fileID: 1120477869}
   - component: {fileID: 1120477868}
+  - component: {fileID: 1120477870}
   m_Layer: 5
   m_Name: MercenaryListPanel
   m_TagString: Untagged
@@ -3364,6 +3366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec2c36ce4b9f6c84bb5d3c2916d0fb03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MercenaryListPanel
+  visibleOnStart: 1
   itemContainer: {fileID: 1117624210}
   mercenaryItemPrefab: {fileID: 2913203361921499697, guid: 066a0f62c668aeb4989eaf960578f1b6, type: 3}
 --- !u!114 &1120477868
@@ -3404,6 +3407,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1120477865}
   m_CullTransparentMesh: 1
+--- !u!225 &1120477870
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120477865}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1165063925
 GameObject:
   m_ObjectHideFlags: 0
@@ -3416,6 +3431,7 @@ GameObject:
   - component: {fileID: 1165063927}
   - component: {fileID: 1165063929}
   - component: {fileID: 1165063928}
+  - component: {fileID: 1165063930}
   m_Layer: 5
   m_Name: ActionLogPanel
   m_TagString: Untagged
@@ -3455,6 +3471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cd6589fed6be2e439c2742e5d3d8025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActionLogPanel
+  visibleOnStart: 1
   logContainer: {fileID: 1286797048}
   logLinePrefab: {fileID: 5756295336837170881, guid: bd75e77b5cb7f664ea98bcef482903de, type: 3}
   scrollRect: {fileID: 1560331877}
@@ -3497,6 +3514,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1165063925}
   m_CullTransparentMesh: 1
+--- !u!225 &1165063930
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165063925}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1225926294
 GameObject:
   m_ObjectHideFlags: 0
@@ -4055,6 +4084,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327005057}
   m_CullTransparentMesh: 1
+--- !u!1 &1334495894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1334495895}
+  - component: {fileID: 1334495896}
+  m_Layer: 0
+  m_Name: KeyboardInputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1334495895
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334495894}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 844523360}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1334495896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334495894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fabfdb4827c04c4a83271d7efbd0f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KeyboardInputManager
+  panelToggles:
+  - key: 4
+    panel: {fileID: 1165063927}
 --- !u!1 &1351978695
 GameObject:
   m_ObjectHideFlags: 0
@@ -6851,6 +6927,7 @@ GameObject:
   - component: {fileID: 1985101714}
   - component: {fileID: 1985101716}
   - component: {fileID: 1985101715}
+  - component: {fileID: 1985101717}
   m_Layer: 5
   m_Name: MercenaryDetailPanel
   m_TagString: Untagged
@@ -6890,6 +6967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c06060026f26c0458ca5d4d97165048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MercenaryDetailPanel
+  visibleOnStart: 1
   nameText: {fileID: 292249928}
   personalityText: {fileID: 785949708}
   statusText: {fileID: 1504940766}
@@ -6905,7 +6983,6 @@ MonoBehaviour:
   currentActionText: {fileID: 1884467020}
   actionButtonContainer: {fileID: 1506495084}
   actionButtonPrefab: {fileID: 4297446950294665305, guid: 20aef9fee1e708a4984a37032981f0cf, type: 3}
-  panelRoot: {fileID: 51107981}
 --- !u!114 &1985101715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6944,6 +7021,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1985101712}
   m_CullTransparentMesh: 1
+--- !u!225 &1985101717
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985101712}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2050951013
 GameObject:
   m_ObjectHideFlags: 0
