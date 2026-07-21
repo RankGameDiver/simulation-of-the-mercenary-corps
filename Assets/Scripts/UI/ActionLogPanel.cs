@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 
-public class ActionLogPanel : MonoBehaviour
+public class ActionLogPanel : PanelBase
 {
     [Header("참조")]
     [SerializeField] private Transform logContainer;
