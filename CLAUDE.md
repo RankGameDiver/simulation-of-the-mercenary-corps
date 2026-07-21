@@ -36,9 +36,20 @@ Key contract:
 ### Mercenary Personality (`Assets/Scripts/Mercenary/DummyMercenaryData.cs`)
 `DummyMercenaryData` is the current working implementation of `IMercenary`, used for prototyping. Each mercenary has a `PersonalityType` (신중형, 충동형, 낙천형, 비관형, 지도자형, 학자형, 냉정형) that determines their autonomous action when none is assigned by the player. Stamina decreases by 10 each turn; `IsIncapacitated` triggers at `Stamina <= 0`.
 
+## Fonts (`Assets/Scripts/Editor/StaticFontAssetBaker.cs`)
+
+Every TMP font asset in the project is baked to a **Static** atlas (`m_AtlasPopulationMode: 0`). This is deliberate: in Dynamic mode TMP appends glyphs to the atlas the first time a character is rendered and rewrites the `.asset` file, so simply entering Play mode produces a multi-megabyte diff. Korean makes this constant — 11,172 precomposed syllables means new text keeps introducing new glyphs.
+
+`Assets/Fonts/NotoSansKR SDF.asset` is the project font (48pt, padding 5, SDFAA, 4096² × 3 atlases) and covers all precomposed Hangul plus ASCII, jamo, and common punctuation/symbols.
+
+To change the font, the sampling size, or the character set, edit the constants at the top of `StaticFontAssetBaker.cs` and run **`Tools > Font > Static SDF 베이크`**. Do not use Font Asset Creator to regenerate the asset in place.
+
+**Never recreate a font asset with `AssetDatabase.CreateAsset`.** Scenes and prefabs reference the font's *material sub-asset* by fileID (`-7482567356781329147` for NotoSansKR), and recreating the asset changes that ID, turning every text object pink. The baker instead builds a font asset in memory and transplants it with `EditorUtility.CopySerialized`, preserving the material and the main asset's GUID.
+
 ## Key Conventions
 
 - Use `GameEvents` for all inter-system communication; do not create direct MonoBehaviour references between systems.
+- Keep every TMP font asset Static. Font Asset Creator defaults new assets to Dynamic — switch them over, or they will churn the repository on every editor run. This includes the TMP package's own `LiberationSans SDF - Fallback`.
 - All new mercenary types must implement `IMercenary` and register/unregister with `TurnManager` (`RegisterMercenary` / `UnregisterMercenary`).
 - `MercenaryData.cs` and `UIManager.cs` are empty stubs — implement these as the project grows.
 - Action IDs are plain strings (e.g., `"훈련"`, `"휴식"`); no enum exists yet.
