@@ -26,6 +26,14 @@ public class MercenaryListPanel : PanelBase
         }
     }
 
+    // 목록이 숨겨지면(키보드 토글·명시적 Hide 등 경로 불문) 용병 선택도 함께 해제한다.
+    // SelectMercenary(null) 하나로 상세 패널이 닫히고 CurrentMercenary / dismisser._current 가 정리된다.
+    protected override void OnVisibilityChanged(bool visible) {
+        if(!visible) {
+            GameEvents.SelectMercenary(null);
+        }
+    }
+
     public void Refresh(IReadOnlyList<IMercenary> mercenaries) {
         // 기존 아이템 전부 제거
         foreach(Transform child in itemContainer) {
