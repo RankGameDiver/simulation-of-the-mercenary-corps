@@ -35,11 +35,20 @@ public class MercenaryDetailPanel : PanelBase
     protected override void Awake() {
         base.Awake();
         BuildActionButtons();
+
+        // 선택된 용병이 없으면 시작 시 숨김
+        Hide();
     }
 
     // 특정 용병을 표시하며 패널을 연다
     // (PanelBase.Show()를 오버로드로 가리지 않도록 별도 이름을 사용)
+    // 선택이 해제되어 null이 넘어오면 패널을 숨긴다.
     public void ShowMercenary(IMercenary m) {
+        if(m == null) {
+            Hide();
+            return;
+        }
+
         CurrentMercenary = m;
         Render(m);
         Show();
