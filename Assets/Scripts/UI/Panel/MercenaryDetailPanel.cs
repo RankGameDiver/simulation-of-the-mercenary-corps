@@ -6,7 +6,6 @@ public class MercenaryDetailPanel : PanelBase
 {
     [Header("기본 정보")]
     [SerializeField] private TextMeshProUGUI nameText;
-    [SerializeField] private TextMeshProUGUI personalityText;
     [SerializeField] private TextMeshProUGUI statusText; // 행동불능 등 상태 표시
 
     [Header("기력 / 사기")]
@@ -26,15 +25,12 @@ public class MercenaryDetailPanel : PanelBase
     [SerializeField] private TextMeshProUGUI currentActionText;
     [SerializeField] private Transform actionButtonContainer;
     [SerializeField] private GameObject actionButtonPrefab;
+    [SerializeField] private ActionCatalog actionCatalog; // 지정 가능한 행동 목록의 원천
 
     public IMercenary CurrentMercenary { get; private set; }
 
-    // 행동 목록 (나중에 ScriptableObject 등으로 교체 가능)
-    private static readonly string[] AvailableActions = { "훈련", "휴식", "독서", "감시", "시장 방문", "기술 연구", "전술 분석" };
-
     protected override void Awake() {
         base.Awake();
-        BuildActionButtons();
 
         // 선택된 용병이 없으면 시작 시 숨김
         Hide();
@@ -63,7 +59,6 @@ public class MercenaryDetailPanel : PanelBase
 
     private void Render(IMercenary m) {
         nameText.text = m.Name;
-        personalityText.text = $"[{m.PersonalityType}]";
 
         // 기력
         staminaSlider.value = m.Stamina;
@@ -82,7 +77,7 @@ public class MercenaryDetailPanel : PanelBase
         charmingText.text = $"매력: {m.Charming}";
 
         // 현재 행동
-        currentActionText.text = $"현재 행동: {m.CurrentAction}";
+        currentActionText.text = $"현재 행동: {m.CurrentAction?.DisplayName ?? "대기"}";
 
         // 상태
         statusText.text = m.IsIncapacitated ? "행동 불능" : "";
@@ -90,30 +85,39 @@ public class MercenaryDetailPanel : PanelBase
 
         // 행동불능 시 행동 버튼 전체 비활성화
         actionButtonContainer.gameObject.SetActive(!m.IsIncapacitated);
+
+        // 선택된 용병의 해금 상태에 맞춰 행동 버튼 재구성
+        BuildActionButtons(m);
     }
 
-    private void BuildActionButtons() {
+    private void BuildActionButtons(IMercenary m) {
         foreach(Transform child in actionButtonContainer) {
             Destroy(child.gameObject);
         }
 
-        foreach(var action in AvailableActions) {
+        foreach(var action in actionCatalog.Actions) {
+            if(action == null) continue;
+
+            bool unlocked = m.IsActionUnlocked(action);
+            if(!unlocked && action.HideWhenLocked) continue;
+
             var go = Instantiate(actionButtonPrefab, actionButtonContainer);
             var btn = go.GetComponent<Button>();
             var label = go.GetComponentInChildren<TextMeshProUGUI>();
 
-            label.text = action;
+            label.text = action.DisplayName;
+            btn.interactable = unlocked; // 미해금이면 비활성(회색)
             var captured = action;
             btn.onClick.AddListener(() => AssignAction(captured));
         }
     }
 
-    private void AssignAction(string action) {
+    private void AssignAction(ActionDefinition action) {
         if(CurrentMercenary == null) return;
 
         CurrentMercenary.AssignAction(action);
         GameEvents.MercenaryStateChanged(CurrentMercenary);
-        GameEvents.Log($"[{CurrentMercenary.Name}] 행동 지정: {action}");
+        GameEvents.Log($"[{CurrentMercenary.Name}] 행동 지정: {action.DisplayName}");
     }
 
     // --- 라벨 헬퍼 ---

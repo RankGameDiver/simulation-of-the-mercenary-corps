@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 // 턴/UI 시스템이 용병을 바라보는 창구
 // 데이터 구조가 변경되어도 이 인터페이스만 유지하면 됨
 public interface IMercenary
@@ -11,11 +13,13 @@ public interface IMercenary
     int Health { get; }       // 건강 (1–10)
     int Intelligence { get; }  // 지능 (1–10)
     int Charming { get; }      // 매력 (1–10)
-    string PersonalityType { get; }
-    string CurrentAction { get; }
+    ActionDefinition CurrentAction { get; } // null이면 미지정(대기)
     bool IsIncapacitated { get; }
 
-    void AssignAction(string actionId); // 작업 할당
+    IReadOnlyCollection<ActionDefinition> UnlockedActions { get; } // 수행 가능한(해금된) 행동
+    bool IsActionUnlocked(ActionDefinition action);
+
+    void AssignAction(ActionDefinition action); // 작업 할당
     void OnTurnStart(); // 턴 시작 시 호출
     void OnTurnExecute(); // 턴 실행 시 호출
 }

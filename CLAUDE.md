@@ -29,12 +29,12 @@ Unity로 제작 중인 턴제 용병단 운영 시뮬레이션입니다. 프로�
 `IMercenary`는 데이터 계층과 턴/UI 시스템 사이의 유일한 인터페이스입니다. 새로운 용병 데이터 구현을 추가할 때는 이 인터페이스를 구현하세요. 턴과 UI 시스템은 구체 타입이 아니라 반드시 `IMercenary`에만 의존해야 합니다.
 
 핵심 계약:
-- `AssignAction(string actionId)` — 계획 단계에서 UI가 호출
+- `AssignAction(ActionDefinition action)` — 계획 단계에서 UI가 호출
 - `OnTurnExecute()` — 실행 단계에서 `TurnManager`가 호출
 - `IsIncapacitated` — `true`이면 `TurnManager`가 해당 용병을 건너뜀
 
-### 용병 성격 (`Assets/Scripts/Mercenary/DummyMercenaryData.cs`)
-`DummyMercenaryData`는 프로토타이핑에 쓰이는 현재의 `IMercenary` 구현체입니다. 각 용병은 `PersonalityType`(신중형, 충동형, 낙천형, 비관형, 지도자형, 학자형, 냉정형)을 가지며, 플레이어가 행동을 지정하지 않았을 때 이 성격이 자율 행동을 결정합니다. 스태미나는 매 턴 10씩 감소하고, `Stamina <= 0`이 되면 `IsIncapacitated`가 발동합니다.
+### 용병 데이터 (`Assets/Scripts/Mercenary/DummyMercenaryData.cs`)
+`DummyMercenaryData`는 프로토타이핑에 쓰이는 현재의 `IMercenary` 구현체입니다. 플레이어가 행동을 지정하지 않으면 기본 자율 행동(`"휴식"`)을 수행합니다. 스태미나는 매 턴 10씩 감소하고, `Stamina <= 0`이 되면 `IsIncapacitated`가 발동합니다.
 
 ## 폰트 (`Assets/Scripts/Editor/StaticFontAssetBaker.cs`)
 
@@ -52,4 +52,5 @@ Unity로 제작 중인 턴제 용병단 운영 시뮬레이션입니다. 프로�
 - 모든 TMP 폰트 애셋을 Static으로 유지하세요. Font Asset Creator는 새 애셋을 Dynamic으로 만들기 때문에, 그대로 두면 에디터를 실행할 때마다 저장소가 지저분해집니다. TMP 패키지 자체의 `LiberationSans SDF - Fallback`도 포함됩니다.
 - 새로운 용병 타입은 모두 `IMercenary`를 구현하고 `TurnManager`에 등록/해제해야 합니다(`RegisterMercenary` / `UnregisterMercenary`).
 - `MercenaryData.cs`와 `UIManager.cs`는 빈 스텁입니다 — 프로젝트가 커지면서 구현해 나가세요.
-- 액션 ID는 단순 문자열입니다(예: `"훈련"`, `"휴식"`). 아직 enum은 없습니다.
+- 용병 행동은 `ActionDefinition` ScriptableObject로 정의합니다(`Assets/Scripts/Actions/`). 지정 가능한 행동 목록은 `ActionCatalog` 애셋 하나가 단일 원천이며, 하드코딩 문자열 배열을 다시 도입하지 마세요. 새 행동은 `Create > 용병단 > 행동 정의`로 애셋을 만들어 카탈로그에 추가합니다. `IMercenary.CurrentAction`이 `null`이면 미지정(대기) 상태입니다.
+- 행동은 용병별로 해금됩니다. 각 `ActionDefinition`의 `unlockChance`(0~1)에 따라 용병 생성 시(`DummyMercenaryData`) 확률적으로 `unlockedActions` 집합이 채워집니다(`1`=항상 해금, `0`=해금 안 됨). 수행 가능 여부는 `IMercenary.IsActionUnlocked`로 판정하세요. 이 확률 방식은 프로토타이핑용이며, 향후 조건부 해금(요구 스탯 등)이 필요하면 별도 판별자를 도입할 예정입니다. 미해금 행동을 상세 패널에서 숨길지(`hideWhenLocked=true`) 비활성 회색으로 보일지(`false`)는 각 `ActionDefinition` 애셋에서 행동별로 설정합니다.

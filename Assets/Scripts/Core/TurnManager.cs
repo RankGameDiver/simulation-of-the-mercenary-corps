@@ -55,7 +55,7 @@ public class TurnManager : MonoBehaviour
 
             mercenary.OnTurnExecute();
             GameEvents.MercenaryStateChanged(mercenary);
-            GameEvents.Log($"[{mercenary.Name}] {mercenary.CurrentAction} 수행");
+            GameEvents.Log($"[{mercenary.Name}] {mercenary.CurrentAction?.DisplayName ?? "대기"} 수행");
 
             yield return new WaitForSeconds(executionDelay);
         }

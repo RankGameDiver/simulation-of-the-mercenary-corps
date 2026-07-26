@@ -6,7 +6,6 @@ public class MercenaryListItem : MonoBehaviour
 {
     [Header("참조")]
     [SerializeField] private TextMeshProUGUI nameText;
-    [SerializeField] private TextMeshProUGUI personalityText;
     [SerializeField] private TextMeshProUGUI actionText;
     [SerializeField] private Slider staminaSlider;
     [SerializeField] private Slider moraleSlider;
@@ -28,8 +27,7 @@ public class MercenaryListItem : MonoBehaviour
     public void Bind(IMercenary m) {
         _mercenary = m;
         nameText.text = m.Name;
-        personalityText.text = m.PersonalityType;
-        actionText.text = m.CurrentAction;
+        actionText.text = m.CurrentAction?.DisplayName ?? "대기";
 
         staminaSlider.value = m.Stamina;
         moraleSlider.value = m.Morale;
