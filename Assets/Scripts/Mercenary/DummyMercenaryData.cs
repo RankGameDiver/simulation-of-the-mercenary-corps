@@ -8,7 +8,8 @@ public class DummyMercenaryData : MercenaryData
 
     private readonly ActionDefinition _defaultAction; // 행동 미지정 시 자율 행동
 
-    public DummyMercenaryData(string name, ActionCatalog catalog) {
+    public DummyMercenaryData(string name, ActionCatalog catalog,
+                              WeaponCatalog weapons = null, CombatBalanceConfig balance = null) {
         Id = System.Guid.NewGuid().ToString();
         Name = name;
         Stamina = 100;
@@ -22,6 +23,21 @@ public class DummyMercenaryData : MercenaryData
         Charming     = RollStat();
 
         RollUnlockedActions(catalog);
+        RollSingleWeaponSpecialization(weapons, balance);
+    }
+
+    // 단일 무기 특화: 무기 하나를 골라 그 지배 숙련만 가중 롤(Lv.1~5, 높을수록 희소),
+    // 나머지 숙련은 0. 운용 기본값은 한손 단독.
+    private void RollSingleWeaponSpecialization(WeaponCatalog weapons, CombatBalanceConfig balance) {
+        var weapon = weapons != null ? weapons.RandomWeapon() : null;
+        if (weapon == null) { Loadout = null; return; }
+
+        var weights = balance != null ? balance.LevelRollWeights : null;
+        int level = WeaponRoll.WeightedLevel(weights);
+
+        var loadout = new WeaponLoadout(weapon, GripMode.OneHand);
+        loadout.SetLevel(weapon.GoverningProficiency, level);
+        Loadout = loadout;
     }
 
     // 용병 생성 시 각 행동의 해금 여부를 확률로 결정

@@ -12,6 +12,11 @@ public static class GameEvents
     public static event Action<IMercenary> OnMercenarySelected;
     public static event Action<IMercenary> OnMercenaryStateChanged;
 
+    // 전투 관련
+    public static event Action OnCombatStarted;
+    public static event Action<bool> OnCombatEnded; // true=아군 승리
+    public static event Action<ICombatant> OnCombatantActed;
+
     // 로그
     public static event Action<string> OnLogMessage;
 
@@ -22,5 +27,8 @@ public static class GameEvents
     public static void TurnEnded() => OnTurnEnded?.Invoke();
     public static void SelectMercenary(IMercenary m) => OnMercenarySelected?.Invoke(m);
     public static void MercenaryStateChanged(IMercenary m) => OnMercenaryStateChanged?.Invoke(m);
+    public static void CombatStarted() => OnCombatStarted?.Invoke();
+    public static void CombatEnded(bool playerWon) => OnCombatEnded?.Invoke(playerWon);
+    public static void CombatantActed(ICombatant c) => OnCombatantActed?.Invoke(c);
     public static void Log(string msg) => OnLogMessage?.Invoke(msg);
 }

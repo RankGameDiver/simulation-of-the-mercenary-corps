@@ -16,6 +16,8 @@ public interface IMercenary
     ActionDefinition CurrentAction { get; } // null이면 미지정(대기)
     bool IsIncapacitated { get; }
 
+    WeaponLoadout Loadout { get; } // 장착 무기·운용·숙련도 (없으면 null)
+
     IReadOnlyCollection<ActionDefinition> UnlockedActions { get; } // 수행 가능한(해금된) 행동
     bool IsActionUnlocked(ActionDefinition action);
 

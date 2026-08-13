@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68208edd810ccab498f9481e8c76fbbc, type: 3}
+  m_Name: "\uC804\uD22C \uBC38\uB7F0\uC2A4 \uC124\uC815"
+  m_EditorClassIdentifier: MercenaryCorps::CombatBalanceConfig
+  advantageMultiplier: 1.2
+  disadvantageMultiplier: 0.8
+  twoHandMatchupAmplify: 1.5
+  twoHandSpeedPenalty: -0.2
+  twoHandStaminaMultiplier: 1.5
+  offhandHitBonus: 0.1
+  offhandEvasionBonus: 0.1
+  offhandSpeedBonus: 0.1
+  offhandStaminaReduction: 0.2
+  offhandMoveBonus: 1
+  shieldDamageReductionMin: 0.15
+  shieldDamageReductionMax: 0.25
+  shieldSpeedPenalty: -0.1
+  levelRollWeights: 2800000019000000120000000c00000005000000
+  advantages:
+  - attacker: 1
+    defender: 0
+  - attacker: 0
+    defender: 2
+  - attacker: 2
+    defender: 1

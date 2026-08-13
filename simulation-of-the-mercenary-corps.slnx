@@ -1,4 +1,7 @@
 ﻿<Solution>
-  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="MercenaryCorps.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="MercenaryCorps.EditModeTests.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="MercenaryCorps.Editor.csproj" />
 </Solution>

@@ -21,6 +21,11 @@ public class MercenaryDetailPanel : PanelBase
     [SerializeField] private TextMeshProUGUI intelligenceText;
     [SerializeField] private TextMeshProUGUI charmingText;
 
+    [Header("무장 (선택: 미연결이어도 동작)")]
+    [SerializeField] private TextMeshProUGUI weaponText;      // 장착 무기
+    [SerializeField] private TextMeshProUGUI gripText;        // 운용 방식
+    [SerializeField] private TextMeshProUGUI proficiencyText; // 숙련도
+
     [Header("행동 지정")]
     [SerializeField] private TextMeshProUGUI currentActionText;
     [SerializeField] private Transform actionButtonContainer;
@@ -76,6 +81,9 @@ public class MercenaryDetailPanel : PanelBase
         intelligenceText.text = $"지능: {m.Intelligence}";
         charmingText.text = $"매력: {m.Charming}";
 
+        // 무장 (무기/운용/숙련도)
+        RenderLoadout(m.Loadout);
+
         // 현재 행동
         currentActionText.text = $"현재 행동: {m.CurrentAction?.DisplayName ?? "대기"}";
 
@@ -118,6 +126,30 @@ public class MercenaryDetailPanel : PanelBase
         CurrentMercenary.AssignAction(action);
         GameEvents.MercenaryStateChanged(CurrentMercenary);
         GameEvents.Log($"[{CurrentMercenary.Name}] 행동 지정: {action.DisplayName}");
+    }
+
+    // 무기·운용·숙련도 표시 (필드가 연결되지 않았으면 조용히 건너뜀)
+    private void RenderLoadout(WeaponLoadout lo) {
+        if (weaponText != null)
+            weaponText.text = lo?.Weapon != null
+                ? $"무기: {lo.Weapon.DisplayName} ({lo.Weapon.WeaponClass.Korean()})"
+                : "무기: 없음";
+
+        if (gripText != null)
+            gripText.text = lo != null ? $"운용: {lo.Grip.Korean()}" : "운용: -";
+
+        if (proficiencyText != null)
+            proficiencyText.text = $"숙련: {BuildProficiencyText(lo)}";
+    }
+
+    private static string BuildProficiencyText(WeaponLoadout lo) {
+        if (lo == null) return "없음";
+        var parts = new System.Collections.Generic.List<string>();
+        foreach (Proficiency p in System.Enum.GetValues(typeof(Proficiency))) {
+            int level = lo.LevelOf(p);
+            if (level > 0) parts.Add($"{p.Korean()} Lv.{level}");
+        }
+        return parts.Count > 0 ? string.Join(" / ", parts) : "없음";
     }
 
     // --- 라벨 헬퍼 ---

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e723ede3fd8a444b8f207c2f36df3f4, type: 3}
+  m_Name: "\uD6C8\uB828\uC6A9 \uB098\uBB34\uC778\uD615(\uB454\uAE30)"
+  m_EditorClassIdentifier: MercenaryCorps::EnemyUnitDefinition
+  displayName: "\uD6C8\uB828\uC6A9 \uB098\uBB34\uC778\uD615(\uB454\uAE30)"
+  maxHP: 40
+  strength: 5
+  agility: 5
+  weapon: {fileID: 11400000, guid: b662e6b8052ea764393af75db6cd91bd, type: 2}
+  grip: 0
+  weaponLevel: 1
+  shieldLevel: 0
+  preferredRow: 0

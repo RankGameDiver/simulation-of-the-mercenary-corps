@@ -1675,6 +1675,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameBootstrap
   dummyMercenaryCount: 5
   actionCatalog: {fileID: 11400000, guid: fa1fa85128b834f408d00bc428c0e1a3, type: 2}
+  weaponCatalog: {fileID: 11400000, guid: 43c340cdc5bded34a811e264a6fa7ab2, type: 2}
+  combatBalance: {fileID: 11400000, guid: 080eb52755b8010408be1b95811aae11, type: 2}
 --- !u!1 &731689736
 GameObject:
   m_ObjectHideFlags: 0
@@ -2339,6 +2341,8 @@ Transform:
   - {fileID: 709786242}
   - {fileID: 1548946397}
   - {fileID: 1334495895}
+  - {fileID: 1809799356}
+  - {fileID: 1788532264}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &918857861
@@ -5864,6 +5868,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1778014866}
   m_CullTransparentMesh: 1
+--- !u!1 &1788532263
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1788532264}
+  - component: {fileID: 1788532265}
+  m_Layer: 0
+  m_Name: CombatDebugStarter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1788532264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788532263}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 844523360}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1788532265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788532263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d6d435301c0d0a41b9608e8b1dad2f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MercenaryCorps::CombatDebugStarter
+  encounter: {fileID: 11400000, guid: 8c974bfc3b6dab2489e12e3c25272d3d, type: 2}
 --- !u!1 &1797952731
 GameObject:
   m_ObjectHideFlags: 0
@@ -6116,6 +6165,55 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -8, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1809799355
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1809799356}
+  - component: {fileID: 1809799357}
+  m_Layer: 0
+  m_Name: CombatManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1809799356
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809799355}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 844523360}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1809799357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809799355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eabab6d79ea0a434cbe075a7d662b15c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MercenaryCorps::CombatManager
+  proficiencyCurve: {fileID: 11400000, guid: eb05eefa5dbb29243a2dc850bd011b38, type: 2}
+  balance: {fileID: 11400000, guid: 080eb52755b8010408be1b95811aae11, type: 2}
+  actionDelay: 0.4
+  baseHitChance: 0.9
+  maxRounds: 30
 --- !u!1 &1836482410
 GameObject:
   m_ObjectHideFlags: 0
@@ -6871,6 +6969,9 @@ MonoBehaviour:
   healthText: {fileID: 830200492}
   intelligenceText: {fileID: 1970238438}
   charmingText: {fileID: 1778014868}
+  weaponText: {fileID: 0}
+  gripText: {fileID: 0}
+  proficiencyText: {fileID: 0}
   currentActionText: {fileID: 1884467020}
   actionButtonContainer: {fileID: 1506495084}
   actionButtonPrefab: {fileID: 4297446950294665305, guid: 20aef9fee1e708a4984a37032981f0cf, type: 3}

@@ -14,6 +14,8 @@ public class MercenaryData : IMercenary
     public ActionDefinition CurrentAction { get; protected set; } // null = 미지정(대기)
     public virtual bool IsIncapacitated => Stamina <= 0;
 
+    public WeaponLoadout Loadout { get; protected set; } // 장착 무기·운용·숙련도 (없으면 null)
+
     // 이 용병이 수행할 수 있는(해금된) 행동 집합
     protected readonly HashSet<ActionDefinition> unlockedActions = new();
     public IReadOnlyCollection<ActionDefinition> UnlockedActions => unlockedActions;
