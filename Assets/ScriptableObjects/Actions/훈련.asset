@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: "\uD6C8\uB828"
   m_EditorClassIdentifier: Assembly-CSharp::ActionDefinition
   displayName: "\uD6C8\uB828"
-  description: 
+  description: "\uC219\uB828 \uACBD\uD5D8\uCE58\uB97C \uC313\uB294\uB2E4. \uC77C\uC815 \uD655\uB960\uB85C \uC2A4\uD0AC\uC744 \uC775\uD78C\uB2E4."
   unlockRule: 0
   randomUnlockChance: 1

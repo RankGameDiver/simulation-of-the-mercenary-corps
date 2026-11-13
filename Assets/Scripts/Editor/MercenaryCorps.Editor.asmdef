@@ -3,7 +3,9 @@
     "rootNamespace": "",
     "references": [
         "MercenaryCorps",
-        "Unity.TextMeshPro"
+        "Unity.TextMeshPro",
+        "UnityEngine.UI",
+        "Unity.InputSystem"
     ],
     "includePlatforms": [
         "Editor"

@@ -19,6 +19,11 @@ public class KeyboardInputManager : MonoBehaviour
     [Header("패널 토글 키 바인딩")]
     [SerializeField] private List<PanelToggleBinding> panelToggles = new();
 
+    [Header("육성 화면 단축키")]
+    [SerializeField] private Key[] routineKeys = { Key.Digit1, Key.Digit2, Key.Digit3, Key.Digit4 }; // 일과 카드 (카탈로그 순서)
+    [SerializeField] private Key[] endTurnKeys = { Key.Space, Key.Enter, Key.NumpadEnter };       // 턴 넘기기
+    [SerializeField] private Key growthTabKey = Key.Tab;                                            // 성장 정보 탭 전환
+
     // 런타임에 확정된 매핑
     private readonly List<(Key key, IPanel panel)> _bindings = new();
 
@@ -48,7 +53,19 @@ public class KeyboardInputManager : MonoBehaviour
                 panel.Toggle();
             }
         }
+
+        // 단축키는 요청 이벤트만 발행하고, 가능 여부는 받는 쪽(TurnManager, RoutinePanel 등)이 판단한다
+        for(int i = 0; i < routineKeys.Length; i++) {
+            if(WasPressed(keyboard, routineKeys[i])) GameEvents.RoutineHotkeyPressed(i);
+        }
+        foreach(var key in endTurnKeys) {
+            if(WasPressed(keyboard, key)) { GameEvents.EndTurnRequested(); break; }
+        }
+        if(WasPressed(keyboard, growthTabKey)) GameEvents.GrowthTabCycleRequested();
     }
+
+    private static bool WasPressed(Keyboard keyboard, Key key) =>
+        key != Key.None && keyboard[key].wasPressedThisFrame;
 
     // 런타임에 생성되는 패널용 등록/해제
     public void RegisterToggle(Key key, IPanel panel) => _bindings.Add((key, panel));

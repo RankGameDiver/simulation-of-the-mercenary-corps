@@ -35,7 +35,12 @@ Unity로 제작 중인 턴제 용병 육성 시뮬레이션입니다. 플레이�
 - `OnTurnStart()` / `OnTurnExecute()` — 턴 시작·실행 단계에서 `TurnManager`가 호출
 
 ### 용병 데이터 (`Assets/Scripts/Mercenary/DummyMercenaryData.cs`)
-`DummyMercenaryData`는 프로토타이핑에 쓰이는 현재의 `IMercenary` 구현체입니다. 플레이어가 행동을 지정하지 않으면 기본 자율 행동(`"휴식"`)을 수행합니다. 기력(`Stamina`)은 육성 일과와 전투 승리로 소모되는 값이며 전투 중에는 쓰지 않습니다. 일과별 기력 변화는 아직 구현되지 않았습니다.
+`DummyMercenaryData`는 프로토타이핑에 쓰이는 현재의 `IMercenary` 구현체입니다. 일과는 플레이어가 **직접** 골라야 하며, 미지정 상태로는 턴을 넘길 수 없습니다(`TurnManager.CanEndPlanning`). 자율 기본 행동은 없습니다. 기력(`Stamina`)은 육성 일과와 전투 승리로 소모되는 값이며 전투 중에는 쓰지 않습니다. HP(`CurrentHp`/`MaxHp`=건강×10)는 전투 후에도 다음 전투까지 이어집니다. 일과별 효과(기력·숙련·자원 변화)는 아직 구현되지 않았습니다.
+
+### 육성 화면 UI (`Assets/Scripts/UI/`, 설계: [`Docs/UI_육성화면.md`](Docs/UI_육성화면.md))
+3열 레이아웃: `MercenaryStatusPanel`(좌, 읽기 전용) · `RoutinePanel`+`RoutineCard`(중앙, 일과 카드) · `GrowthPanel`(우, 숙련/스킬/장비 탭), 상단 바(`UIManager`의 턴 표시·`ResourceBar`), 하단 `ActionLogPanel`(접힘 시 최근 한 줄). 각 패널은 `GameEvents`를 직접 구독해 스스로 갱신하고, 버튼·키 입력은 요청 이벤트(`EndTurnRequested`, `RoutineHotkeyPressed`, `GrowthTabCycleRequested`)만 발행합니다.
+
+씬의 UI 계층은 **`Tools > UI > 육성 화면 구성`**(`Editor/TrainingScreenBuilder.cs`)이 Canvas 아래를 지우고 새로 만들며 참조까지 연결합니다. 레이아웃을 바꿀 때는 빌더를 고치고 다시 실행하는 방식을 우선하세요(`RoutineCard.prefab`도 빌더가 생성).
 
 ### 전투 (`Assets/Scripts/Combat/`, `Assets/Scripts/Weapons/`)
 `CombatManager`는 관리용 `TurnManager`와 분리된 1대1 전투 싱글톤입니다. 현재는 다대다 자동 전투를 걷어낸 골격으로, 양측 `Combatant` 구성과 일반 공격 판정만 있습니다. 라운드 루프(동시 선택 → 해결)는 기획서 5장에 따라 구현합니다. 피해·명중·상성 규칙은 `CombatMath` / `WeaponMatchup`(순수 규칙)에 있고, 밸런싱 수치는 `CombatBalanceConfig` 애셋에 노출합니다.

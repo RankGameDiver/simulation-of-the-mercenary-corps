@@ -23,7 +23,8 @@ public abstract class PanelBase : MonoBehaviour, IPanel
 
     public void Show() => SetVisible(true);
     public void Hide() => SetVisible(false);
-    public void Toggle() => SetVisible(!IsVisible);
+    // 파생 패널이 토글 키의 의미를 바꿀 수 있다 (예: 로그 패널은 숨김 대신 펼치기/접기)
+    public virtual void Toggle() => SetVisible(!IsVisible);
 
     private void SetVisible(bool visible) {
         _canvasGroup.alpha = visible ? 1f : 0f;
