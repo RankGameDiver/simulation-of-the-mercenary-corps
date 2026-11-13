@@ -15,14 +15,10 @@ public class EnemyUnitDefinition : ScriptableObject
     [SerializeField, Range(0, 5)] private int weaponLevel = 1;
     [SerializeField, Range(0, 5)] private int shieldLevel = 0;
 
-    [Header("배치 선호")]
-    [SerializeField] private FormationRow preferredRow = FormationRow.Front;
-
     public string DisplayName => string.IsNullOrEmpty(displayName) ? name : displayName;
     public int MaxHP => maxHP;
     public int Strength => strength;
     public int Agility => agility;
-    public FormationRow PreferredRow => preferredRow;
 
     public WeaponLoadout BuildLoadout() {
         if (weapon == null) return null;

@@ -13,22 +13,20 @@ public static class CombatTestFactory
 
     public static WeaponDefinition Weapon(
         WeaponClass cls, Proficiency prof, float strengthWeight, float agilityWeight,
-        int oneHandRange = 1, int twoHandRange = 1, TwoHandEffect effect = TwoHandEffect.None) {
+        TwoHandEffect effect = TwoHandEffect.None) {
         var w = ScriptableObject.CreateInstance<WeaponDefinition>();
         SetPrivate(w, "weaponClass", cls);
         SetPrivate(w, "governingProficiency", prof);
         SetPrivate(w, "strengthWeight", strengthWeight);
         SetPrivate(w, "agilityWeight", agilityWeight);
-        SetPrivate(w, "oneHandRange", oneHandRange);
-        SetPrivate(w, "twoHandRange", twoHandRange);
         SetPrivate(w, "twoHandEffect", effect);
         return w;
     }
 
     // 문서 기준 표준 무기 3종
-    public static WeaponDefinition Sword() => Weapon(WeaponClass.Sword, Proficiency.Swordsmanship, 0f, 1f, 1, 1, TwoHandEffect.AoeRow);
-    public static WeaponDefinition Spear() => Weapon(WeaponClass.Spear, Proficiency.Spearmanship, 0.5f, 0.5f, 2, 3, TwoHandEffect.Pierce);
-    public static WeaponDefinition Blunt() => Weapon(WeaponClass.Blunt, Proficiency.BluntArts, 1f, 0f, 1, 1, TwoHandEffect.ArmorBreakKnockback);
+    public static WeaponDefinition Sword() => Weapon(WeaponClass.Sword, Proficiency.Swordsmanship, 0f, 1f, TwoHandEffect.AoeRow);
+    public static WeaponDefinition Spear() => Weapon(WeaponClass.Spear, Proficiency.Spearmanship, 0.5f, 0.5f, TwoHandEffect.Pierce);
+    public static WeaponDefinition Blunt() => Weapon(WeaponClass.Blunt, Proficiency.BluntArts, 1f, 0f, TwoHandEffect.ArmorBreakKnockback);
 
     public static ProficiencyCurve Curve() => ScriptableObject.CreateInstance<ProficiencyCurve>();
     public static CombatBalanceConfig Config() => ScriptableObject.CreateInstance<CombatBalanceConfig>();

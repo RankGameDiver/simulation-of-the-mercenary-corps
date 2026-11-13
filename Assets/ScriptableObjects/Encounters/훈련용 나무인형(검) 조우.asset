@@ -13,7 +13,4 @@ MonoBehaviour:
   m_Name: "\uD6C8\uB828\uC6A9 \uB098\uBB34\uC778\uD615(\uAC80) \uC870\uC6B0"
   m_EditorClassIdentifier: MercenaryCorps::EncounterDefinition
   displayName: "\uD6C8\uB828\uC6A9 \uB098\uBB34\uC778\uD615(\uAC80) \uC870\uC6B0"
-  enemies:
-  - unit: {fileID: 11400000, guid: 4f66d9b7156239a4191cc0836cac7213, type: 2}
-    row: 0
-    column: 0
+  enemy: {fileID: 11400000, guid: 4f66d9b7156239a4191cc0836cac7213, type: 2}

@@ -13,7 +13,6 @@ public class DummyMercenaryData : MercenaryData
         Id = System.Guid.NewGuid().ToString();
         Name = name;
         Stamina = 100;
-        Morale = 100;
         _defaultAction = catalog.DefaultAction;
 
         Strength     = RollStat();
@@ -52,8 +51,6 @@ public class DummyMercenaryData : MercenaryData
         if (_defaultAction != null) unlockedActions.Add(_defaultAction);
     }
 
-    public override bool IsIncapacitated => Stamina <= 0;
-
     public override void AssignAction(ActionDefinition action) {
         CurrentAction = action;
     }
@@ -64,9 +61,6 @@ public class DummyMercenaryData : MercenaryData
     }
 
     public override void OnTurnExecute() {
-        // 턴마다 기력 소모 시뮬레이션
-        Stamina -= 10;
-
         // 행동 미지정 시 기본 자율 행동
         if(CurrentAction == null) {
             CurrentAction = _defaultAction;

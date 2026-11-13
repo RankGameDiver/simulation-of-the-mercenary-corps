@@ -4,7 +4,9 @@
 
 ## 프로젝트 개요
 
-Unity로 제작 중인 턴제 용병단 운영 시뮬레이션입니다. 프로젝트는 초기 개발 단계이며, `Assets/Scripts/Core/` 밖의 클래스 대부분은 아직 스텁 상태입니다. 게임 내용은 한국어로 작성됩니다(주석, 문자열 리터럴, 필드 라벨 모두 한국어).
+Unity로 제작 중인 턴제 용병 육성 시뮬레이션입니다. 플레이어는 **용병 한 명**을 관리하고, 전투는 **1대1 커맨드 턴제**(공격·방어·대기·스킬)로 진행됩니다. 프로젝트는 초기 개발 단계입니다. 게임 내용은 한국어로 작성됩니다(주석, 문자열 리터럴, 필드 라벨 모두 한국어).
+
+기획의 단일 원천은 [`Docs/기획서.md`](Docs/기획서.md)입니다. 구현 전에 확인하고, 기획이 바뀌면 이 문서를 먼저 갱신하세요.
 
 ## Unity 설정
 
@@ -22,7 +24,7 @@ Unity로 제작 중인 턴제 용병단 운영 시뮬레이션입니다. 프로�
 ### 턴 흐름 (`Assets/Scripts/Core/TurnManager.cs`)
 `TurnManager`는 세 단계 루프를 관리하는 싱글톤 `MonoBehaviour`입니다:
 1. **계획** (`TurnPhase.Planning`) — UI가 용병에게 행동을 지정합니다. `EndPlanningPhase()` 호출로 종료되며, 이 메서드는 UI 버튼에 연결되어 있습니다
-2. **실행** (`TurnPhase.Execution`) — 등록된 용병을 순회하며 각각의 `OnTurnExecute()`를 호출하고, 사이마다 설정 가능한 `executionDelay` 만큼 대기합니다
+2. **실행** (`TurnPhase.Execution`) — 관리 중인 용병(`TurnManager.Mercenary`)의 `OnTurnExecute()`를 호출하고, 설정 가능한 `executionDelay` 만큼 대기합니다
 3. **정산** (`TurnPhase.Resolution`) — 잠시 대기한 뒤 턴 카운터를 올리고 다시 계획 단계로 돌아갑니다
 
 ### 용병 추상화 (`Assets/Scripts/Core/IMercenary.cs`)
@@ -30,11 +32,13 @@ Unity로 제작 중인 턴제 용병단 운영 시뮬레이션입니다. 프로�
 
 핵심 계약:
 - `AssignAction(ActionDefinition action)` — 계획 단계에서 UI가 호출
-- `OnTurnExecute()` — 실행 단계에서 `TurnManager`가 호출
-- `IsIncapacitated` — `true`이면 `TurnManager`가 해당 용병을 건너뜀
+- `OnTurnStart()` / `OnTurnExecute()` — 턴 시작·실행 단계에서 `TurnManager`가 호출
 
 ### 용병 데이터 (`Assets/Scripts/Mercenary/DummyMercenaryData.cs`)
-`DummyMercenaryData`는 프로토타이핑에 쓰이는 현재의 `IMercenary` 구현체입니다. 플레이어가 행동을 지정하지 않으면 기본 자율 행동(`"휴식"`)을 수행합니다. 스태미나는 매 턴 10씩 감소하고, `Stamina <= 0`이 되면 `IsIncapacitated`가 발동합니다.
+`DummyMercenaryData`는 프로토타이핑에 쓰이는 현재의 `IMercenary` 구현체입니다. 플레이어가 행동을 지정하지 않으면 기본 자율 행동(`"휴식"`)을 수행합니다. 기력(`Stamina`)은 육성 일과와 전투 승리로 소모되는 값이며 전투 중에는 쓰지 않습니다. 일과별 기력 변화는 아직 구현되지 않았습니다.
+
+### 전투 (`Assets/Scripts/Combat/`, `Assets/Scripts/Weapons/`)
+`CombatManager`는 관리용 `TurnManager`와 분리된 1대1 전투 싱글톤입니다. 현재는 다대다 자동 전투를 걷어낸 골격으로, 양측 `Combatant` 구성과 일반 공격 판정만 있습니다. 라운드 루프(동시 선택 → 해결)는 기획서 5장에 따라 구현합니다. 피해·명중·상성 규칙은 `CombatMath` / `WeaponMatchup`(순수 규칙)에 있고, 밸런싱 수치는 `CombatBalanceConfig` 애셋에 노출합니다.
 
 ## 폰트 (`Assets/Scripts/Editor/StaticFontAssetBaker.cs`)
 
@@ -50,7 +54,7 @@ Unity로 제작 중인 턴제 용병단 운영 시뮬레이션입니다. 프로�
 
 - 시스템 간 통신은 모두 `GameEvents`를 사용합니다. 시스템끼리 MonoBehaviour를 직접 참조하지 마세요.
 - 모든 TMP 폰트 애셋을 Static으로 유지하세요. Font Asset Creator는 새 애셋을 Dynamic으로 만들기 때문에, 그대로 두면 에디터를 실행할 때마다 저장소가 지저분해집니다. TMP 패키지 자체의 `LiberationSans SDF - Fallback`도 포함됩니다.
-- 새로운 용병 타입은 모두 `IMercenary`를 구현하고 `TurnManager`에 등록/해제해야 합니다(`RegisterMercenary` / `UnregisterMercenary`).
-- `MercenaryData.cs`와 `UIManager.cs`는 빈 스텁입니다 — 프로젝트가 커지면서 구현해 나가세요.
+- 용병은 한 명뿐입니다. 새로운 용병 타입은 `IMercenary`를 구현하고 `TurnManager.SetMercenary`로 등록합니다. 용병 목록·선택 UI를 다시 도입하지 마세요.
+- 전투는 1대1입니다. 포메이션·사거리·이동 개념은 기획에서 제거되었습니다.
 - 용병 행동은 `ActionDefinition` ScriptableObject로 정의합니다(`Assets/Scripts/Actions/`). 지정 가능한 행동 목록은 `ActionCatalog` 애셋 하나가 단일 원천이며, 하드코딩 문자열 배열을 다시 도입하지 마세요. 새 행동은 `Create > 용병단 > 행동 정의`로 애셋을 만들어 카탈로그에 추가합니다. `IMercenary.CurrentAction`이 `null`이면 미지정(대기) 상태입니다.
 - 행동은 용병별로 해금됩니다. 각 `ActionDefinition`의 `unlockChance`(0~1)에 따라 용병 생성 시(`DummyMercenaryData`) 확률적으로 `unlockedActions` 집합이 채워집니다(`1`=항상 해금, `0`=해금 안 됨). 수행 가능 여부는 `IMercenary.IsActionUnlocked`로 판정하세요. 이 확률 방식은 프로토타이핑용이며, 향후 조건부 해금(요구 스탯 등)이 필요하면 별도 판별자를 도입할 예정입니다. 미해금 행동을 상세 패널에서 숨길지(`hideWhenLocked=true`) 비활성 회색으로 보일지(`false`)는 각 `ActionDefinition` 애셋에서 행동별로 설정합니다.

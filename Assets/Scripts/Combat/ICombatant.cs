@@ -13,9 +13,5 @@ public interface ICombatant
     int Agility { get; }
     WeaponLoadout Loadout { get; } // 무기·운용·숙련도 (없으면 null = 맨손)
 
-    FormationRow Row { get; }
-    int Column { get; }
-
-    void SetPosition(FormationRow row, int column);
     void TakeDamage(float amount);
 }

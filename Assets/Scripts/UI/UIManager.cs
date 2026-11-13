@@ -1,12 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Collections.Generic;
 
 public class UIManager : MonoBehaviour
 {
     [Header("패널 참조")]
-    [SerializeField] private MercenaryListPanel mercenaryListPanel;
     [SerializeField] private MercenaryDetailPanel mercenaryDetailPanel;
     [SerializeField] private ActionLogPanel logPanel;
     [SerializeField] private ResourceBar resourceBar;
@@ -24,7 +22,6 @@ public class UIManager : MonoBehaviour
         GameEvents.OnTurnStarted += OnTurnStarted;
         GameEvents.OnPlanningPhaseStart += OnPlanningPhase;
         GameEvents.OnExecutionPhaseStart += OnExecutionPhase;
-        GameEvents.OnMercenarySelected += OnMercenarySelected;
         GameEvents.OnMercenaryStateChanged += OnMercenaryStateChanged;
     }
 
@@ -32,13 +29,15 @@ public class UIManager : MonoBehaviour
         GameEvents.OnTurnStarted -= OnTurnStarted;
         GameEvents.OnPlanningPhaseStart -= OnPlanningPhase;
         GameEvents.OnExecutionPhaseStart -= OnExecutionPhase;
-        GameEvents.OnMercenarySelected -= OnMercenarySelected;
         GameEvents.OnMercenaryStateChanged -= OnMercenaryStateChanged;
     }
 
     private void OnTurnStarted(int turn) {
         turnNumberText.text = $"Turn {turn}";
-        mercenaryListPanel.Refresh(TurnManager.Instance.GetMercenaries());
+
+        // 용병 생성(GameBootstrap)과 턴 시작의 Start 순서는 보장되지 않으므로 있을 때만 갱신
+        var m = TurnManager.Instance.Mercenary;
+        if(m != null) mercenaryDetailPanel.Bind(m);
     }
 
     private void OnPlanningPhase() {
@@ -51,12 +50,5 @@ public class UIManager : MonoBehaviour
         endTurnButton.interactable = false; // 실행 중 버튼 비활성화
     }
 
-    private void OnMercenarySelected(IMercenary m) => mercenaryDetailPanel.ShowMercenary(m);
-
-    private void OnMercenaryStateChanged(IMercenary m) {
-        mercenaryListPanel.RefreshItem(m);
-        if(mercenaryDetailPanel.CurrentMercenary?.Id == m.Id) {
-            mercenaryDetailPanel.ShowMercenary(m);
-        }
-    }
+    private void OnMercenaryStateChanged(IMercenary m) => mercenaryDetailPanel.Bind(m);
 }

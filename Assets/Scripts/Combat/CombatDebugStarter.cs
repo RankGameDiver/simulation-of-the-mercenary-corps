@@ -18,7 +18,7 @@ public class CombatDebugStarter : MonoBehaviour
             return;
         }
 
-        var party = TurnManager.Instance != null ? TurnManager.Instance.GetMercenaries() : null;
-        CombatManager.Instance.StartEncounter(party, encounter);
+        var player = TurnManager.Instance != null ? TurnManager.Instance.Mercenary : null;
+        CombatManager.Instance.StartEncounter(player, encounter);
     }
 }

@@ -27,7 +27,6 @@ public class CombatBalanceConfig : ScriptableObject
     [SerializeField] private float offhandEvasionBonus = 0.1f;     // 회피 +10%
     [SerializeField] private float offhandSpeedBonus = 0.1f;       // 행동속도 +10%
     [SerializeField] private float offhandStaminaReduction = 0.2f; // 기력 소모 -20%
-    [SerializeField] private int offhandMoveBonus = 1;             // 이동력 +1
 
     [Header("운용: 한손+방패 (방패술 숙련도에 비례)")]
     [SerializeField] private float shieldDamageReductionMin = 0.15f; // 방패술 0일 때
@@ -53,7 +52,6 @@ public class CombatBalanceConfig : ScriptableObject
     public float OffhandEvasionBonus => offhandEvasionBonus;
     public float OffhandSpeedBonus => offhandSpeedBonus;
     public float OffhandStaminaReduction => offhandStaminaReduction;
-    public int OffhandMoveBonus => offhandMoveBonus;
     public float ShieldSpeedPenalty => shieldSpeedPenalty;
     public IReadOnlyList<int> LevelRollWeights => levelRollWeights;
 

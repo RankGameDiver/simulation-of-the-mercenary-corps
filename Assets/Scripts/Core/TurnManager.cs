@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum TurnPhase { Planning, Execution, Resolution }
@@ -9,12 +8,13 @@ public class TurnManager : MonoBehaviour
     public static TurnManager Instance { get; private set; }
 
     [Header("설정")]
-    [SerializeField] private float executionDelay = 0.5f; // 실행 간 딜레이
+    [SerializeField] private float executionDelay = 0.5f; // 실행 후 딜레이
 
     public int CurrentTurn { get; private set; }
     public TurnPhase CurrentPhase { get; private set; }
 
-    private List<IMercenary> _mercenaries = new();
+    // 플레이어가 관리하는 단 한 명의 용병 (없으면 null)
+    public IMercenary Mercenary { get; private set; }
 
     void Awake() {
         if (Instance != null) { 
@@ -31,9 +31,7 @@ public class TurnManager : MonoBehaviour
         GameEvents.PlanningPhaseStart();
     }
 
-    public void RegisterMercenary(IMercenary m) => _mercenaries.Add(m);
-    public void UnregisterMercenary(IMercenary m) => _mercenaries.Remove(m);
-    public IReadOnlyList<IMercenary> GetMercenaries() => _mercenaries;
+    public void SetMercenary(IMercenary m) => Mercenary = m;
 
     // UI의 턴 종료 버튼에서 호출
     public void EndPlanningPhase() {
@@ -47,15 +45,10 @@ public class TurnManager : MonoBehaviour
         GameEvents.ExecutionPhaseStart();
         GameEvents.Log($"=== {CurrentTurn + 1}턴 실행 시작 ===");
 
-        foreach(var mercenary in _mercenaries) {
-            if(mercenary.IsIncapacitated) {
-                GameEvents.Log($"[{mercenary.Name}] 행동불능 상태로 건너뜀");
-                continue;
-            }
-
-            mercenary.OnTurnExecute();
-            GameEvents.MercenaryStateChanged(mercenary);
-            GameEvents.Log($"[{mercenary.Name}] {mercenary.CurrentAction?.DisplayName ?? "대기"} 수행");
+        if(Mercenary != null) {
+            Mercenary.OnTurnExecute();
+            GameEvents.MercenaryStateChanged(Mercenary);
+            GameEvents.Log($"[{Mercenary.Name}] {Mercenary.CurrentAction?.DisplayName ?? "대기"} 수행");
 
             yield return new WaitForSeconds(executionDelay);
         }
@@ -68,9 +61,7 @@ public class TurnManager : MonoBehaviour
         CurrentTurn++;
         CurrentPhase = TurnPhase.Planning;
 
-        foreach(var mercenary in _mercenaries) {
-            mercenary.OnTurnStart();
-        }
+        Mercenary?.OnTurnStart();
 
         GameEvents.TurnStarted(CurrentTurn);
         GameEvents.PlanningPhaseStart();

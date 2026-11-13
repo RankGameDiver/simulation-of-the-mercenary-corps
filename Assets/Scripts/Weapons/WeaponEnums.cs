@@ -23,12 +23,6 @@ public enum GripMode {
     TwoHand,       // 양손 (하이리스크 하이리턴)
 }
 
-// 포메이션 열
-public enum FormationRow {
-    Front, // 전열
-    Back,  // 후열
-}
-
 // 양손 전용 강화 효과 (한손 특성을 극단화)
 public enum TwoHandEffect {
     None,                // 없음
@@ -66,11 +60,5 @@ public static class WeaponText {
         GripMode.OneHandShield => "한손+방패",
         GripMode.TwoHand => "양손",
         _ => g.ToString(),
-    };
-
-    public static string Korean(this FormationRow r) => r switch {
-        FormationRow.Front => "전열",
-        FormationRow.Back => "후열",
-        _ => r.ToString(),
     };
 }

@@ -18,6 +18,4 @@ MonoBehaviour:
   governingProficiency: 2
   strengthWeight: 1
   agilityWeight: 0.2
-  oneHandRange: 1
-  twoHandRange: 1
   twoHandEffect: 3

@@ -21,7 +21,6 @@ MonoBehaviour:
   offhandEvasionBonus: 0.1
   offhandSpeedBonus: 0.1
   offhandStaminaReduction: 0.2
-  offhandMoveBonus: 1
   shieldDamageReductionMin: 0.15
   shieldDamageReductionMax: 0.25
   shieldSpeedPenalty: -0.1

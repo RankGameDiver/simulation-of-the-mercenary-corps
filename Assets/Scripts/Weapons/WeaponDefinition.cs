@@ -17,10 +17,6 @@ public class WeaponDefinition : ScriptableObject
     [SerializeField, Range(0f, 1f)] private float strengthWeight = 0f;
     [SerializeField, Range(0f, 1f)] private float agilityWeight = 1f;
 
-    [Header("사거리 (칸)")]
-    [SerializeField] private int oneHandRange = 1;              // 한손 운용 사거리 (창=2)
-    [SerializeField] private int twoHandRange = 1;             // 양손 운용 사거리 (양손창=3)
-
     [Header("양손 전용 효과")]
     [SerializeField] private TwoHandEffect twoHandEffect = TwoHandEffect.None;
 
@@ -30,10 +26,5 @@ public class WeaponDefinition : ScriptableObject
     public Proficiency GoverningProficiency => governingProficiency;
     public float StrengthWeight => strengthWeight;
     public float AgilityWeight => agilityWeight;
-    public int OneHandRange => oneHandRange;
-    public int TwoHandRange => twoHandRange;
     public TwoHandEffect TwoHandEffect => twoHandEffect;
-
-    // 운용에 따른 실제 사거리
-    public int RangeFor(GripMode grip) => grip == GripMode.TwoHand ? twoHandRange : oneHandRange;
 }

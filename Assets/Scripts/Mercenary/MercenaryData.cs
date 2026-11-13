@@ -5,14 +5,12 @@ public class MercenaryData : IMercenary
     public string Id { get; protected set; }
     public string Name { get; protected set; }
     public int Stamina { get; protected set; }
-    public int Morale { get; protected set; }
     public int Strength { get; protected set; }      // 근력 (1–10)
     public int Agility { get; protected set; }       // 민첩 (1–10)
     public int Health { get; protected set; }       // 체력 (1–10)
     public int Intelligence { get; protected set; }  // 지능 (1–10)
     public int Charming { get; protected set; }      // 매력 (1–10)
     public ActionDefinition CurrentAction { get; protected set; } // null = 미지정(대기)
-    public virtual bool IsIncapacitated => Stamina <= 0;
 
     public WeaponLoadout Loadout { get; protected set; } // 장착 무기·운용·숙련도 (없으면 null)
 
