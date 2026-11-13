@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3926620306594114673}
   - component: {fileID: 8528361692497290026}
   m_Layer: 5
-  m_Name: NameText
+  m_Name: '[Text] Name'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 4331995096037176486}
   - component: {fileID: 5684513612314266706}
   m_Layer: 5
-  m_Name: DescriptionText
+  m_Name: '[Text] Description'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 699243681431700943}
   - component: {fileID: 637602139600230330}
   m_Layer: 5
-  m_Name: HotkeyText
+  m_Name: '[Text] Hotkey'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -588,7 +588,7 @@ GameObject:
   - component: {fileID: 8669886291516392380}
   - component: {fileID: 6708113364825014146}
   m_Layer: 5
-  m_Name: StateText
+  m_Name: '[Text] State'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

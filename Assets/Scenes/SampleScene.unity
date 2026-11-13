@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 7161192}
   - component: {fileID: 7161191}
   m_Layer: 5
-  m_Name: Content
+  m_Name: '[Panel] Content'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 20955722}
   - component: {fileID: 20955721}
   m_Layer: 5
-  m_Name: Value
+  m_Name: '[Text] Value'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 25859964}
   - component: {fileID: 25859963}
   m_Layer: 5
-  m_Name: "Tab_\uC2A4\uD0AC"
+  m_Name: '[Button] SkillTab'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 34222368}
   - component: {fileID: 34222367}
   m_Layer: 5
-  m_Name: SelectionText
+  m_Name: '[Text] Selection'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -645,7 +645,7 @@ GameObject:
   - component: {fileID: 85286156}
   - component: {fileID: 85286155}
   m_Layer: 5
-  m_Name: TrainingScreen
+  m_Name: '[Panel] TrainingScreen'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -825,7 +825,7 @@ GameObject:
   - component: {fileID: 142769381}
   - component: {fileID: 142769380}
   m_Layer: 5
-  m_Name: "\uBCF4\uAE09Value"
+  m_Name: '[Text] SupplyValue'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -962,7 +962,7 @@ GameObject:
   - component: {fileID: 157190095}
   - component: {fileID: 157190094}
   m_Layer: 5
-  m_Name: HpText
+  m_Name: '[Text] Hp'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1099,7 +1099,7 @@ GameObject:
   - component: {fileID: 211112332}
   - component: {fileID: 211112331}
   m_Layer: 5
-  m_Name: Bar
+  m_Name: '[Slider] Bar'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1209,7 +1209,7 @@ GameObject:
   - component: {fileID: 271636299}
   - component: {fileID: 271636298}
   m_Layer: 5
-  m_Name: Text
+  m_Name: '[Text] Body'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1483,7 +1483,7 @@ GameObject:
   - component: {fileID: 343998508}
   - component: {fileID: 343998507}
   m_Layer: 5
-  m_Name: LatestLineText
+  m_Name: '[Text] LatestLine'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1620,7 +1620,7 @@ GameObject:
   - component: {fileID: 375040800}
   - component: {fileID: 375040799}
   m_Layer: 5
-  m_Name: GripText
+  m_Name: '[Text] Grip'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1757,7 +1757,7 @@ GameObject:
   - component: {fileID: 380656554}
   - component: {fileID: 380656553}
   m_Layer: 5
-  m_Name: Background
+  m_Name: '[Image] Background'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1957,7 +1957,7 @@ GameObject:
   m_Component:
   - component: {fileID: 422763369}
   m_Layer: 5
-  m_Name: Fill Area
+  m_Name: '[Panel] FillArea'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1995,7 +1995,7 @@ GameObject:
   - component: {fileID: 466248699}
   - component: {fileID: 466248698}
   m_Layer: 5
-  m_Name: TurnInfoText
+  m_Name: '[Text] TurnInfo'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2133,7 +2133,7 @@ GameObject:
   - component: {fileID: 476429708}
   - component: {fileID: 476429707}
   m_Layer: 5
-  m_Name: Divider
+  m_Name: '[Image] Divider'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2228,7 +2228,7 @@ GameObject:
   - component: {fileID: 479051271}
   - component: {fileID: 479051270}
   m_Layer: 5
-  m_Name: "\uBCF4\uAE09Label"
+  m_Name: '[Text] SupplyLabel'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2365,7 +2365,7 @@ GameObject:
   - component: {fileID: 486649244}
   - component: {fileID: 486649243}
   m_Layer: 5
-  m_Name: StaminaBar
+  m_Name: '[Slider] Stamina'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2475,7 +2475,7 @@ GameObject:
   - component: {fileID: 564539240}
   - component: {fileID: 564539239}
   m_Layer: 5
-  m_Name: Text
+  m_Name: '[Text] Body'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2613,7 +2613,7 @@ GameObject:
   - component: {fileID: 576331879}
   - component: {fileID: 576331878}
   m_Layer: 5
-  m_Name: HintText
+  m_Name: '[Text] Hint'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2770,7 +2770,7 @@ GameObject:
   - component: {fileID: 577999018}
   - component: {fileID: 577999017}
   m_Layer: 5
-  m_Name: Label
+  m_Name: '[Text] Label'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2907,7 +2907,7 @@ GameObject:
   - component: {fileID: 583028523}
   - component: {fileID: 583028522}
   m_Layer: 5
-  m_Name: NameText
+  m_Name: '[Text] Name'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3044,7 +3044,7 @@ GameObject:
   - component: {fileID: 591859732}
   - component: {fileID: 591859731}
   m_Layer: 5
-  m_Name: Background
+  m_Name: '[Image] Background'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3119,7 +3119,7 @@ GameObject:
   - component: {fileID: 656932820}
   - component: {fileID: 656932819}
   m_Layer: 5
-  m_Name: Bar
+  m_Name: '[Slider] Bar'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3231,7 +3231,7 @@ GameObject:
   - component: {fileID: 672325651}
   - component: {fileID: 672325650}
   m_Layer: 5
-  m_Name: GrowthColumn
+  m_Name: '[Panel] GrowthColumn'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3348,7 +3348,7 @@ GameObject:
   - component: {fileID: 699459832}
   - component: {fileID: 699459831}
   m_Layer: 5
-  m_Name: Fill
+  m_Name: '[Image] Fill'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3424,7 +3424,7 @@ GameObject:
   - component: {fileID: 704544873}
   - component: {fileID: 704544872}
   m_Layer: 5
-  m_Name: "Tab_\uC7A5\uBE44"
+  m_Name: '[Button] EquipmentTab'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3543,7 +3543,7 @@ GameObject:
   - component: {fileID: 709786242}
   - component: {fileID: 709786243}
   m_Layer: 0
-  m_Name: GameBoostrap
+  m_Name: GameBootstrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3592,7 +3592,7 @@ GameObject:
   - component: {fileID: 744030546}
   - component: {fileID: 744030545}
   m_Layer: 5
-  m_Name: Label
+  m_Name: '[Text] Label'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3747,7 +3747,7 @@ GameObject:
   m_Component:
   - component: {fileID: 756043855}
   m_Layer: 5
-  m_Name: Fill Area
+  m_Name: '[Panel] FillArea'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3785,7 +3785,7 @@ GameObject:
   - component: {fileID: 794072482}
   - component: {fileID: 794072481}
   m_Layer: 5
-  m_Name: intelligenceRow
+  m_Name: '[Panel] IntelligenceRow'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3871,7 +3871,7 @@ GameObject:
   - component: {fileID: 810300692}
   - component: {fileID: 810300691}
   m_Layer: 5
-  m_Name: TopBar
+  m_Name: '[Panel] TopBar'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3948,7 +3948,7 @@ GameObject:
   - component: {fileID: 812730331}
   - component: {fileID: 812730330}
   m_Layer: 5
-  m_Name: healthRow
+  m_Name: '[Panel] HealthRow'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4034,7 +4034,7 @@ GameObject:
   - component: {fileID: 819469232}
   - component: {fileID: 819469231}
   m_Layer: 5
-  m_Name: Fill
+  m_Name: '[Image] Fill'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4110,7 +4110,7 @@ GameObject:
   - component: {fileID: 822189702}
   - component: {fileID: 822189701}
   m_Layer: 5
-  m_Name: Title
+  m_Name: '[Text] Title'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4356,7 +4356,7 @@ GameObject:
   - component: {fileID: 851268495}
   - component: {fileID: 851268494}
   m_Layer: 5
-  m_Name: StatusColumn
+  m_Name: '[Panel] StatusColumn'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4525,7 +4525,7 @@ GameObject:
   - component: {fileID: 861411727}
   - component: {fileID: 861411726}
   m_Layer: 5
-  m_Name: StaminaText
+  m_Name: '[Text] Stamina'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4660,7 +4660,7 @@ GameObject:
   m_Component:
   - component: {fileID: 869160672}
   m_Layer: 5
-  m_Name: Fill Area
+  m_Name: '[Panel] FillArea'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4698,7 +4698,7 @@ GameObject:
   - component: {fileID: 896423143}
   - component: {fileID: 896423142}
   m_Layer: 5
-  m_Name: Title
+  m_Name: '[Text] Title'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4835,7 +4835,7 @@ GameObject:
   - component: {fileID: 897556544}
   - component: {fileID: 897556543}
   m_Layer: 5
-  m_Name: Fill
+  m_Name: '[Image] Fill'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4910,7 +4910,7 @@ GameObject:
   - component: {fileID: 921081920}
   - component: {fileID: 921081919}
   m_Layer: 5
-  m_Name: Label
+  m_Name: '[Text] Label'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5045,7 +5045,7 @@ GameObject:
   m_Component:
   - component: {fileID: 934949966}
   m_Layer: 5
-  m_Name: "Content_\uC2A4\uD0AC"
+  m_Name: '[Panel] SkillContent'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5081,7 +5081,7 @@ GameObject:
   m_Component:
   - component: {fileID: 945089151}
   m_Layer: 5
-  m_Name: "Content_\uC219\uB828"
+  m_Name: '[Panel] ProficiencyContent'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5119,7 +5119,7 @@ GameObject:
   - component: {fileID: 968052021}
   - component: {fileID: 968052020}
   m_Layer: 5
-  m_Name: Label
+  m_Name: '[Text] Label'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5335,7 +5335,7 @@ GameObject:
   - component: {fileID: 1004939065}
   - component: {fileID: 1004939064}
   m_Layer: 5
-  m_Name: StatsHeader
+  m_Name: '[Text] StatsHeader'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5472,7 +5472,7 @@ GameObject:
   - component: {fileID: 1021877762}
   - component: {fileID: 1021877761}
   m_Layer: 5
-  m_Name: Fill
+  m_Name: '[Image] Fill'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5545,7 +5545,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1035403004}
   m_Layer: 5
-  m_Name: Fill Area
+  m_Name: '[Panel] FillArea'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5584,7 +5584,7 @@ GameObject:
   - component: {fileID: 1036486809}
   - component: {fileID: 1036486808}
   m_Layer: 5
-  m_Name: ToggleButton
+  m_Name: '[Button] Toggle'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5705,7 +5705,7 @@ GameObject:
   - component: {fileID: 1041414136}
   - component: {fileID: 1041414135}
   m_Layer: 5
-  m_Name: Divider
+  m_Name: '[Image] Divider'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5802,7 +5802,7 @@ GameObject:
   - component: {fileID: 1044840400}
   - component: {fileID: 1044840399}
   m_Layer: 5
-  m_Name: LogPanel
+  m_Name: '[Panel] Log'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5914,7 +5914,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1069831068}
   m_Layer: 5
-  m_Name: Header
+  m_Name: '[Panel] Header'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5955,7 +5955,7 @@ GameObject:
   - component: {fileID: 1090613248}
   - component: {fileID: 1090613247}
   m_Layer: 5
-  m_Name: Value
+  m_Name: '[Text] Value'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6110,7 +6110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1096460335}
   m_Layer: 5
-  m_Name: Body
+  m_Name: '[Panel] Body'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6150,7 +6150,7 @@ GameObject:
   - component: {fileID: 1097382295}
   - component: {fileID: 1097382294}
   m_Layer: 5
-  m_Name: HpBar
+  m_Name: '[Slider] Hp'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6260,7 +6260,7 @@ GameObject:
   - component: {fileID: 1118547415}
   - component: {fileID: 1118547414}
   m_Layer: 5
-  m_Name: Fill
+  m_Name: '[Image] Fill'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6335,7 +6335,7 @@ GameObject:
   - component: {fileID: 1123976001}
   - component: {fileID: 1123976000}
   m_Layer: 5
-  m_Name: Fill
+  m_Name: '[Image] Fill'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6410,7 +6410,7 @@ GameObject:
   - component: {fileID: 1137887621}
   - component: {fileID: 1137887620}
   m_Layer: 5
-  m_Name: CardGrid
+  m_Name: '[Panel] CardGrid'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6494,7 +6494,7 @@ GameObject:
   - component: {fileID: 1138853107}
   - component: {fileID: 1138853106}
   m_Layer: 5
-  m_Name: RoutineColumn
+  m_Name: '[Panel] RoutineColumn'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6626,7 +6626,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1165726230}
   m_Layer: 5
-  m_Name: "Content_\uC7A5\uBE44"
+  m_Name: '[Panel] EquipmentContent'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6665,7 +6665,7 @@ GameObject:
   - component: {fileID: 1194188254}
   - component: {fileID: 1194188253}
   m_Layer: 5
-  m_Name: Label
+  m_Name: '[Text] Label'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6822,7 +6822,7 @@ GameObject:
   - component: {fileID: 1248072719}
   - component: {fileID: 1248072718}
   m_Layer: 5
-  m_Name: Bar
+  m_Name: '[Slider] Bar'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6931,7 +6931,7 @@ GameObject:
   - component: {fileID: 1261197416}
   - component: {fileID: 1261197417}
   m_Layer: 5
-  m_Name: Viewport
+  m_Name: '[Panel] Viewport'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6983,7 +6983,7 @@ GameObject:
   - component: {fileID: 1315248091}
   - component: {fileID: 1315248090}
   m_Layer: 5
-  m_Name: Fill
+  m_Name: '[Image] Fill'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7109,7 +7109,7 @@ GameObject:
   - component: {fileID: 1346369611}
   - component: {fileID: 1346369610}
   m_Layer: 5
-  m_Name: Value
+  m_Name: '[Text] Value'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7266,7 +7266,7 @@ GameObject:
   - component: {fileID: 1351471818}
   - component: {fileID: 1351471817}
   m_Layer: 5
-  m_Name: Background
+  m_Name: '[Image] Background'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7341,7 +7341,7 @@ GameObject:
   - component: {fileID: 1358652485}
   - component: {fileID: 1358652484}
   m_Layer: 5
-  m_Name: "\uC601\uD5A5\uB825Label"
+  m_Name: '[Text] InfluenceLabel'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7479,7 +7479,7 @@ GameObject:
   - component: {fileID: 1372094517}
   - component: {fileID: 1372094516}
   m_Layer: 5
-  m_Name: Divider
+  m_Name: '[Image] Divider'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7608,7 +7608,7 @@ GameObject:
   - component: {fileID: 1381388060}
   - component: {fileID: 1381388059}
   m_Layer: 5
-  m_Name: Background
+  m_Name: '[Image] Background'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7761,7 +7761,7 @@ GameObject:
   - component: {fileID: 1421109795}
   - component: {fileID: 1421109794}
   m_Layer: 5
-  m_Name: Background
+  m_Name: '[Image] Background'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7836,7 +7836,7 @@ GameObject:
   - component: {fileID: 1442347913}
   - component: {fileID: 1442347912}
   m_Layer: 5
-  m_Name: charmingRow
+  m_Name: '[Panel] CharmingRow'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7922,7 +7922,7 @@ GameObject:
   - component: {fileID: 1475062118}
   - component: {fileID: 1475062117}
   m_Layer: 5
-  m_Name: Label
+  m_Name: '[Text] Label'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8059,7 +8059,7 @@ GameObject:
   - component: {fileID: 1492590111}
   - component: {fileID: 1492590110}
   m_Layer: 5
-  m_Name: Bar
+  m_Name: '[Slider] Bar'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8167,7 +8167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1504035296}
   m_Layer: 5
-  m_Name: Fill Area
+  m_Name: '[Panel] FillArea'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8206,7 +8206,7 @@ GameObject:
   - component: {fileID: 1525291058}
   - component: {fileID: 1525291057}
   m_Layer: 5
-  m_Name: Value
+  m_Name: '[Text] Value'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8409,7 +8409,7 @@ GameObject:
   - component: {fileID: 1587706988}
   - component: {fileID: 1587706989}
   m_Layer: 5
-  m_Name: Spacer
+  m_Name: '[Panel] Spacer'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8464,7 +8464,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1591818590}
   m_Layer: 5
-  m_Name: Fill Area
+  m_Name: '[Panel] FillArea'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8500,7 +8500,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1598882507}
   m_Layer: 5
-  m_Name: TabContent
+  m_Name: '[Panel] TabContent'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8541,7 +8541,7 @@ GameObject:
   - component: {fileID: 1605568432}
   - component: {fileID: 1605568431}
   m_Layer: 5
-  m_Name: Label
+  m_Name: '[Text] Label'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8699,7 +8699,7 @@ GameObject:
   - component: {fileID: 1608026546}
   - component: {fileID: 1608026545}
   m_Layer: 5
-  m_Name: Label
+  m_Name: '[Text] Label'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8855,7 +8855,7 @@ GameObject:
   - component: {fileID: 1623728342}
   - component: {fileID: 1623728343}
   m_Layer: 5
-  m_Name: ScrollView
+  m_Name: '[ScrollView] LogList'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8923,7 +8923,7 @@ GameObject:
   - component: {fileID: 1700043202}
   - component: {fileID: 1700043201}
   m_Layer: 5
-  m_Name: Label
+  m_Name: '[Text] Label'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9061,7 +9061,7 @@ GameObject:
   - component: {fileID: 1759124054}
   - component: {fileID: 1759124053}
   m_Layer: 5
-  m_Name: Value
+  m_Name: '[Text] Value'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9218,7 +9218,7 @@ GameObject:
   - component: {fileID: 1768066767}
   - component: {fileID: 1768066766}
   m_Layer: 5
-  m_Name: Bar
+  m_Name: '[Slider] Bar'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9373,7 +9373,7 @@ GameObject:
   - component: {fileID: 1791397181}
   - component: {fileID: 1791397180}
   m_Layer: 5
-  m_Name: ResourceBar
+  m_Name: '[Panel] ResourceBar'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9504,7 +9504,7 @@ GameObject:
   - component: {fileID: 1829968652}
   - component: {fileID: 1829968651}
   m_Layer: 5
-  m_Name: Background
+  m_Name: '[Image] Background'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9579,7 +9579,7 @@ GameObject:
   - component: {fileID: 1835061944}
   - component: {fileID: 1835061943}
   m_Layer: 5
-  m_Name: strengthRow
+  m_Name: '[Panel] StrengthRow'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9665,7 +9665,7 @@ GameObject:
   - component: {fileID: 1893911676}
   - component: {fileID: 1893911675}
   m_Layer: 5
-  m_Name: "\uC601\uD5A5\uB825Value"
+  m_Name: '[Text] InfluenceValue'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9802,7 +9802,7 @@ GameObject:
   - component: {fileID: 1906341456}
   - component: {fileID: 1906341455}
   m_Layer: 5
-  m_Name: EndTurnRow
+  m_Name: '[Panel] EndTurnRow'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9887,7 +9887,7 @@ GameObject:
   - component: {fileID: 1907919494}
   - component: {fileID: 1907919493}
   m_Layer: 5
-  m_Name: "\uACE8\uB4DCLabel"
+  m_Name: '[Text] GoldLabel'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10024,7 +10024,7 @@ GameObject:
   - component: {fileID: 1926533258}
   - component: {fileID: 1926533257}
   m_Layer: 5
-  m_Name: Background
+  m_Name: '[Image] Background'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10099,7 +10099,7 @@ GameObject:
   - component: {fileID: 1929792445}
   - component: {fileID: 1929792444}
   m_Layer: 5
-  m_Name: agilityRow
+  m_Name: '[Panel] AgilityRow'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10185,7 +10185,7 @@ GameObject:
   - component: {fileID: 2007044811}
   - component: {fileID: 2007044810}
   m_Layer: 5
-  m_Name: WeaponText
+  m_Name: '[Text] Weapon'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10322,7 +10322,7 @@ GameObject:
   - component: {fileID: 2016672194}
   - component: {fileID: 2016672193}
   m_Layer: 5
-  m_Name: Text
+  m_Name: '[Text] Body'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10461,7 +10461,7 @@ GameObject:
   - component: {fileID: 2022790664}
   - component: {fileID: 2022790663}
   m_Layer: 5
-  m_Name: EndTurnButton
+  m_Name: '[Button] EndTurn'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10601,7 +10601,7 @@ GameObject:
   - component: {fileID: 2062170347}
   - component: {fileID: 2062170346}
   m_Layer: 5
-  m_Name: "\uACE8\uB4DCValue"
+  m_Name: '[Text] GoldValue'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10736,7 +10736,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2065787809}
   m_Layer: 5
-  m_Name: Fill Area
+  m_Name: '[Panel] FillArea'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10775,7 +10775,7 @@ GameObject:
   - component: {fileID: 2086676168}
   - component: {fileID: 2086676167}
   m_Layer: 5
-  m_Name: Label
+  m_Name: '[Text] Label'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10931,7 +10931,7 @@ GameObject:
   - component: {fileID: 2104922521}
   - component: {fileID: 2104922522}
   m_Layer: 5
-  m_Name: TabBar
+  m_Name: '[Panel] TabBar'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10998,7 +10998,7 @@ GameObject:
   - component: {fileID: 2136201538}
   - component: {fileID: 2136201537}
   m_Layer: 5
-  m_Name: "Tab_\uC219\uB828"
+  m_Name: '[Button] ProficiencyTab'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
