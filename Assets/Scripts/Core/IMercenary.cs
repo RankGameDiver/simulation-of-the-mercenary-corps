@@ -12,14 +12,18 @@ public interface IMercenary
     int Health { get; }       // 건강 (1–10)
     int Intelligence { get; }  // 지능 (1–10)
     int Charming { get; }      // 매력 (1–10)
-    ActionDefinition CurrentAction { get; } // null이면 미지정(대기)
+
+    int MaxHp { get; }     // 최대 HP (건강 × 10)
+    int CurrentHp { get; } // 현재 HP. 전투가 끝나도 회복되지 않고 다음 전투까지 이어진다
+
+    ActionDefinition CurrentAction { get; } // 이번 턴에 지정한 일과. null이면 미지정(턴을 넘길 수 없음)
 
     WeaponLoadout Loadout { get; } // 장착 무기·운용·숙련도 (없으면 null)
 
     IReadOnlyCollection<ActionDefinition> UnlockedActions { get; } // 수행 가능한(해금된) 행동
     bool IsActionUnlocked(ActionDefinition action);
 
-    void AssignAction(ActionDefinition action); // 작업 할당
+    void AssignAction(ActionDefinition action); // 일과 지정 (실행은 턴을 넘길 때)
     void OnTurnStart(); // 턴 시작 시 호출
     void OnTurnExecute(); // 턴 실행 시 호출
 }

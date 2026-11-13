@@ -2,6 +2,8 @@ using System.Collections.Generic;
 
 public class MercenaryData : IMercenary
 {
+    public const int HpPerHealth = 10; // 최대 HP = 건강 × 10 (기획서 2.2 [제안])
+
     public string Id { get; protected set; }
     public string Name { get; protected set; }
     public int Stamina { get; protected set; }
@@ -10,7 +12,11 @@ public class MercenaryData : IMercenary
     public int Health { get; protected set; }       // 체력 (1–10)
     public int Intelligence { get; protected set; }  // 지능 (1–10)
     public int Charming { get; protected set; }      // 매력 (1–10)
-    public ActionDefinition CurrentAction { get; protected set; } // null = 미지정(대기)
+
+    public int MaxHp => Health * HpPerHealth;
+    public int CurrentHp { get; protected set; }
+
+    public ActionDefinition CurrentAction { get; protected set; } // null = 미지정
 
     public WeaponLoadout Loadout { get; protected set; } // 장착 무기·운용·숙련도 (없으면 null)
 

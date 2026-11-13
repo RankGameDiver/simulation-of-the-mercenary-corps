@@ -37,7 +37,21 @@ public static class CombatTestFactory
         return c;
     }
 
-    // 무기 롤에 영향을 주지 않는 최소 행동 카탈로그 (actions 비어 있음, default null)
+    // 해금 확률을 지정한 일과
+    public static ActionDefinition Action(string name, float unlockChance) {
+        var a = ScriptableObject.CreateInstance<ActionDefinition>();
+        SetPrivate(a, "displayName", name);
+        SetPrivate(a, "unlockChance", unlockChance);
+        return a;
+    }
+
+    public static ActionCatalog ActionCatalog(params ActionDefinition[] actions) {
+        var c = ScriptableObject.CreateInstance<ActionCatalog>();
+        SetPrivate(c, "actions", actions);
+        return c;
+    }
+
+    // 무기 롤에 영향을 주지 않는 최소 행동 카탈로그 (actions 비어 있음)
     public static ActionCatalog EmptyActionCatalog() {
         var c = ScriptableObject.CreateInstance<ActionCatalog>();
         SetPrivate(c, "actions", new ActionDefinition[0]);

@@ -11,6 +11,11 @@ public static class GameEvents
     // 용병 관련
     public static event Action<IMercenary> OnMercenaryStateChanged;
 
+    // 입력 요청 (버튼·키보드 → 각 시스템). 요청을 받은 쪽이 가능 여부를 판단한다.
+    public static event Action OnEndTurnRequested;            // 턴 넘기기
+    public static event Action<int> OnRoutineHotkeyPressed;   // 일과 단축키 (0부터 시작하는 카탈로그 순서)
+    public static event Action OnGrowthTabCycleRequested;     // 성장 정보 탭 전환
+
     // 전투 관련
     public static event Action OnCombatStarted;
     public static event Action<bool> OnCombatEnded; // true=아군 승리
@@ -25,6 +30,9 @@ public static class GameEvents
     public static void ExecutionPhaseStart() => OnExecutionPhaseStart?.Invoke();
     public static void TurnEnded() => OnTurnEnded?.Invoke();
     public static void MercenaryStateChanged(IMercenary m) => OnMercenaryStateChanged?.Invoke(m);
+    public static void EndTurnRequested() => OnEndTurnRequested?.Invoke();
+    public static void RoutineHotkeyPressed(int index) => OnRoutineHotkeyPressed?.Invoke(index);
+    public static void GrowthTabCycleRequested() => OnGrowthTabCycleRequested?.Invoke();
     public static void CombatStarted() => OnCombatStarted?.Invoke();
     public static void CombatEnded(bool playerWon) => OnCombatEnded?.Invoke(playerWon);
     public static void CombatantActed(ICombatant c) => OnCombatantActed?.Invoke(c);

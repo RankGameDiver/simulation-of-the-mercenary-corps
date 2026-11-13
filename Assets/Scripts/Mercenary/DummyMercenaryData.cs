@@ -6,20 +6,18 @@ public class DummyMercenaryData : MercenaryData
     private const int StatWeightExcellent    = 3;   // 스탯 9
     private const int StatWeightPeak         = 1;   // 스탯 10
 
-    private readonly ActionDefinition _defaultAction; // 행동 미지정 시 자율 행동
-
     public DummyMercenaryData(string name, ActionCatalog catalog,
                               WeaponCatalog weapons = null, CombatBalanceConfig balance = null) {
         Id = System.Guid.NewGuid().ToString();
         Name = name;
         Stamina = 100;
-        _defaultAction = catalog.DefaultAction;
 
         Strength     = RollStat();
         Agility      = RollStat();
         Health       = RollStat();
         Intelligence = RollStat();
         Charming     = RollStat();
+        CurrentHp    = MaxHp; // 생성 직후에는 가득 찬 상태
 
         RollUnlockedActions(catalog);
         RollSingleWeaponSpecialization(weapons, balance);
@@ -47,24 +45,25 @@ public class DummyMercenaryData : MercenaryData
             bool unlocked = action.UnlockChance >= 1f || UnityEngine.Random.value < action.UnlockChance;
             if (unlocked) unlockedActions.Add(action);
         }
-        // 자율 기본 행동은 항상 수행 가능해야 하므로 보장
-        if (_defaultAction != null) unlockedActions.Add(_defaultAction);
+        // 일과는 직접 골라야만 턴을 넘길 수 있으므로, 해금된 일과가 하나도 없으면 진행이 막힌다.
+        // 최소 하나는 unlockChance = 1 로 두어야 한다.
+        if (unlockedActions.Count == 0 && catalog.Actions.Count > 0)
+            UnityEngine.Debug.LogWarning($"[용병 생성] {Name}: 해금된 일과가 없습니다. 행동 카탈로그에 unlockChance = 1인 일과를 두세요.");
     }
 
     public override void AssignAction(ActionDefinition action) {
+        // 해금되지 않은 일과는 지정할 수 없다
+        if (action != null && !IsActionUnlocked(action)) return;
         CurrentAction = action;
     }
 
     public override void OnTurnStart() {
-        // 이전 턴 행동 초기화 (새 턴 계획을 위해 비움)
+        // 이전 턴 일과 초기화 (새 턴에는 다시 직접 골라야 한다)
         CurrentAction = null;
     }
 
     public override void OnTurnExecute() {
-        // 행동 미지정 시 기본 자율 행동
-        if(CurrentAction == null) {
-            CurrentAction = _defaultAction;
-        }
+        // 일과별 효과(기력·숙련·자원 변화)는 아직 구현되지 않았다 (UI 문서 6장 2단계)
     }
 
     private static int RollStat() {

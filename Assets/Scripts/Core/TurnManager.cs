@@ -16,14 +16,21 @@ public class TurnManager : MonoBehaviour
     // 플레이어가 관리하는 단 한 명의 용병 (없으면 null)
     public IMercenary Mercenary { get; private set; }
 
+    // 턴을 넘길 수 있는가: 계획 단계이고, 일과를 직접 지정했을 때만 (기획서 4.1 [확정])
+    public bool CanEndPlanning =>
+        CurrentPhase == TurnPhase.Planning && Mercenary != null && Mercenary.CurrentAction != null;
+
     void Awake() {
-        if (Instance != null) { 
-            Destroy(gameObject); 
-            return; 
+        if (Instance != null) {
+            Destroy(gameObject);
+            return;
         }
 
         Instance = this;
     }
+
+    void OnEnable() => GameEvents.OnEndTurnRequested += EndPlanningPhase;
+    void OnDisable() => GameEvents.OnEndTurnRequested -= EndPlanningPhase;
 
     void Start() {
         CurrentPhase = TurnPhase.Planning;
@@ -33,9 +40,16 @@ public class TurnManager : MonoBehaviour
 
     public void SetMercenary(IMercenary m) => Mercenary = m;
 
-    // UI의 턴 종료 버튼에서 호출
+    // 턴 넘기기 (버튼·키보드 모두 GameEvents.EndTurnRequested를 거쳐 들어온다)
     public void EndPlanningPhase() {
         if(CurrentPhase != TurnPhase.Planning) return;
+
+        // 일과를 고르지 않으면 턴을 넘길 수 없다. 자율 행동은 없다.
+        if(!CanEndPlanning) {
+            GameEvents.Log("일과를 선택해야 턴을 넘길 수 있습니다.");
+            return;
+        }
+
         StartCoroutine(ExecuteTurn());
     }
 
@@ -45,13 +59,11 @@ public class TurnManager : MonoBehaviour
         GameEvents.ExecutionPhaseStart();
         GameEvents.Log($"=== {CurrentTurn + 1}턴 실행 시작 ===");
 
-        if(Mercenary != null) {
-            Mercenary.OnTurnExecute();
-            GameEvents.MercenaryStateChanged(Mercenary);
-            GameEvents.Log($"[{Mercenary.Name}] {Mercenary.CurrentAction?.DisplayName ?? "대기"} 수행");
+        Mercenary.OnTurnExecute();
+        GameEvents.MercenaryStateChanged(Mercenary);
+        GameEvents.Log($"[{Mercenary.Name}] {Mercenary.CurrentAction.DisplayName} 수행");
 
-            yield return new WaitForSeconds(executionDelay);
-        }
+        yield return new WaitForSeconds(executionDelay);
 
         // 2. 정산 단계
         CurrentPhase = TurnPhase.Resolution;
@@ -61,10 +73,11 @@ public class TurnManager : MonoBehaviour
         CurrentTurn++;
         CurrentPhase = TurnPhase.Planning;
 
-        Mercenary?.OnTurnStart();
+        Mercenary.OnTurnStart();
 
         GameEvents.TurnStarted(CurrentTurn);
         GameEvents.PlanningPhaseStart();
+        GameEvents.MercenaryStateChanged(Mercenary); // 일과가 비워진 상태를 UI에 반영
         GameEvents.Log($"=== {CurrentTurn}턴 계획 단계 ===");
     }
 }
