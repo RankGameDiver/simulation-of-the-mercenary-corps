@@ -3,7 +3,7 @@ using UnityEngine.Serialization;
 
 // 용병이 수행할 수 있는 행동 하나를 정의하는 애셋.
 // 행동 종류가 늘어나면 이 애셋을 하나씩 추가한다.
-[CreateAssetMenu(fileName = "새 행동", menuName = "용병단/행동 정의")]
+[CreateAssetMenu(fileName = "NewAction", menuName = "용병단/행동 정의")]
 public class ActionDefinition : ScriptableObject
 {
     [SerializeField] private string displayName; // 버튼/표시에 쓰는 이름 (예: "훈련")

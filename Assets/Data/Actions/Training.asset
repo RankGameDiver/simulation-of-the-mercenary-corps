@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0983447348f366d44aceed3d90d2aca9, type: 3}
-  m_Name: "\uD734\uC2DD"
+  m_Name: Training
   m_EditorClassIdentifier: Assembly-CSharp::ActionDefinition
-  displayName: "\uD734\uC2DD"
-  description: "\uAE30\uB825\uC744 \uD68C\uBCF5\uD55C\uB2E4. \uBCF4\uAE09\uC744 \uC18C\uBAA8\uD55C\uB2E4."
+  displayName: "\uD6C8\uB828"
+  description: "\uC219\uB828 \uACBD\uD5D8\uCE58\uB97C \uC313\uB294\uB2E4. \uC77C\uC815 \uD655\uB960\uB85C \uC2A4\uD0AC\uC744 \uC775\uD78C\uB2E4."
   unlockRule: 0
   randomUnlockChance: 1

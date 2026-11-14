@@ -2,7 +2,7 @@ using UnityEngine;
 
 // 무기 하나(검/창/둔기)의 정체성을 정의하는 애셋. ActionDefinition과 같은 패턴.
 // 무기 종류가 늘어나면 이 애셋을 하나씩 추가하고 WeaponCatalog에 등록한다.
-[CreateAssetMenu(fileName = "새 무기", menuName = "용병단/무기 정의")]
+[CreateAssetMenu(fileName = "NewWeapon", menuName = "용병단/무기 정의")]
 public class WeaponDefinition : ScriptableObject
 {
     [SerializeField] private string displayName;                 // 표시 이름 (예: "장검")

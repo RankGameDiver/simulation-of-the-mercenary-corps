@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5460834ffb2c5c047ad88aeaa484f59e, type: 3}
-  m_Name: "\uD6C8\uB828\uC6A9 \uB098\uBB34\uC778\uD615(\uAC80) \uC870\uC6B0"
+  m_Name: TrainingDummy_Sword_Encounter
   m_EditorClassIdentifier: MercenaryCorps::EncounterDefinition
   displayName: "\uD6C8\uB828\uC6A9 \uB098\uBB34\uC778\uD615(\uAC80) \uC870\uC6B0"
   enemy: {fileID: 11400000, guid: 4f66d9b7156239a4191cc0836cac7213, type: 2}

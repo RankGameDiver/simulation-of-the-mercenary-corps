@@ -1,7 +1,7 @@
 using UnityEngine;
 
 // 적 유닛 1기의 정의 애셋.
-[CreateAssetMenu(fileName = "새 적", menuName = "용병단/적 유닛 정의")]
+[CreateAssetMenu(fileName = "NewEnemy", menuName = "용병단/적 유닛 정의")]
 public class EnemyUnitDefinition : ScriptableObject
 {
     [SerializeField] private string displayName = "적";

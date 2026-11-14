@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: acadb49143b92824fadd9e06b5aa558a, type: 3}
-  m_Name: "\uC219\uB828\uB3C4 \uACE1\uC120"
+  m_Name: ProficiencyCurve
   m_EditorClassIdentifier: MercenaryCorps::ProficiencyCurve
   steps:
   - hitBonus: 0.03

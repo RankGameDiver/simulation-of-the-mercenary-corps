@@ -3,7 +3,7 @@ using UnityEngine;
 // 숙련도 레벨(1~5) 곡선과 해금 게이트를 정의하는 애셋. 무기 공통으로 하나만 둔다.
 // 문서 기준: Lv1 +3%/+5%, Lv2 +6%/+10%, Lv3 +9%/+15%(+양손 해금),
 //            Lv4 +12%/+20%, Lv5 +15%/+25%(+필살기 해금).
-[CreateAssetMenu(fileName = "숙련도 곡선", menuName = "용병단/숙련도 곡선")]
+[CreateAssetMenu(fileName = "ProficiencyCurve", menuName = "용병단/숙련도 곡선")]
 public class ProficiencyCurve : ScriptableObject
 {
     [System.Serializable]

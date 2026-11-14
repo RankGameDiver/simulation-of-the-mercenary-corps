@@ -3,7 +3,7 @@ using UnityEngine;
 
 // 전투 밸런싱 수치의 단일 원천. 문서 권고("수치는 프로토타입 때 조정")에 따라
 // 상성 배율·운용 효과·양손 페널티·초기 롤 가중치를 전부 에디터 노출한다.
-[CreateAssetMenu(fileName = "전투 밸런스 설정", menuName = "용병단/전투 밸런스 설정")]
+[CreateAssetMenu(fileName = "CombatBalanceConfig", menuName = "용병단/전투 밸런스 설정")]
 public class CombatBalanceConfig : ScriptableObject
 {
     [System.Serializable]
