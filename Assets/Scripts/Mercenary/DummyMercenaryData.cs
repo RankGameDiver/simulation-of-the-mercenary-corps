@@ -63,7 +63,7 @@ public class DummyMercenaryData : MercenaryData
     }
 
     public override void OnTurnExecute() {
-        // 일과별 효과(기력·숙련·자원 변화)는 아직 구현되지 않았다 (UI 문서 6장 2단계)
+        // 일과별 효과(기력·숙련·자원 변화)는 아직 구현되지 않았다 (Docs/미구현_목록.md 1장)
     }
 
     private static int RollStat() {

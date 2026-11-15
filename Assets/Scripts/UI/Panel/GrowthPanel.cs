@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 // 육성 화면 오른쪽 열: 성장 정보 (탭 3개: 숙련 / 스킬 / 장비)
 // 1단계 구현: 숙련은 레벨만, 스킬은 자리만, 장비는 무기·운용·상성 고리 열람.
-// 숙련 경험치·스킬 시스템이 생기면 각 탭을 전용 뷰로 교체한다 (UI 문서 6장 3단계).
+// 숙련 경험치·스킬 시스템이 생기면 각 탭을 전용 뷰로 교체한다 (Docs/미구현_목록.md 9장 3단계).
 public class GrowthPanel : PanelBase
 {
     public enum Tab { Proficiency = 0, Skill = 1, Equipment = 2 }
