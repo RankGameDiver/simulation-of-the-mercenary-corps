@@ -23,6 +23,15 @@ public class DummyMercenaryData : MercenaryData
         RollSingleWeaponSpecialization(weapons, balance);
     }
 
+    private DummyMercenaryData() { } // 세이브 복원 전용 (롤을 하지 않는다)
+
+    // 세이브 데이터로 용병을 되살린다
+    public static DummyMercenaryData FromSave(MercenarySaveData data, ActionCatalog catalog, WeaponCatalog weapons) {
+        var m = new DummyMercenaryData();
+        m.ApplySaveData(data, catalog, weapons);
+        return m;
+    }
+
     // 단일 무기 특화: 무기 하나를 골라 그 지배 숙련만 가중 롤(Lv.1~5, 높을수록 희소),
     // 나머지 숙련은 0. 운용 기본값은 한손 단독.
     private void RollSingleWeaponSpecialization(WeaponCatalog weapons, CombatBalanceConfig balance) {

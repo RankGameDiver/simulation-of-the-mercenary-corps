@@ -15,4 +15,13 @@ public class WeaponCatalog : ScriptableObject
         if (weapons == null || weapons.Length == 0) return null;
         return weapons[Random.Range(0, weapons.Length)];
     }
+
+    // 애셋 이름으로 찾는다 (세이브 복원용). 없으면 null
+    public WeaponDefinition FindByName(string assetName) {
+        if(weapons == null || string.IsNullOrEmpty(assetName)) return null;
+        foreach(var weapon in weapons) {
+            if(weapon != null && weapon.name == assetName) return weapon;
+        }
+        return null;
+    }
 }

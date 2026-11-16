@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 
 // 용병 한 명이 소지한 무기 + 운용 방식 + 숙련도 레벨 묶음.
-// 런타임 데이터(디스크 직렬화 대상 아님). 단일 무기 특화 방식에서는 무기 하나의
+// 런타임 데이터. 저장은 MercenaryData.ToSaveData()가 무기 이름·운용·레벨로 풀어서 한다. 단일 무기 특화 방식에서는 무기 하나의
 // 지배 숙련만 레벨>0, 나머지는 0이다.
 public class WeaponLoadout
 {

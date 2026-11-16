@@ -10,4 +10,13 @@ public class ActionCatalog : ScriptableObject
     [SerializeField] private ActionDefinition[] actions; // 표시 순서 = 단축키 순서(1, 2, 3 …)
 
     public IReadOnlyList<ActionDefinition> Actions => actions;
+
+    // 애셋 이름으로 찾는다 (세이브 복원용). 없으면 null
+    public ActionDefinition FindByName(string assetName) {
+        if(actions == null || string.IsNullOrEmpty(assetName)) return null;
+        foreach(var action in actions) {
+            if(action != null && action.name == assetName) return action;
+        }
+        return null;
+    }
 }

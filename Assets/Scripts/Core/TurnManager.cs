@@ -32,13 +32,17 @@ public class TurnManager : MonoBehaviour
     void OnEnable() => GameEvents.OnEndTurnRequested += EndPlanningPhase;
     void OnDisable() => GameEvents.OnEndTurnRequested -= EndPlanningPhase;
 
-    void Start() {
+    // 게임 시작 (새 게임·이어하기 공통). GameBootstrap이 용병을 준비한 뒤 호출한다.
+    // startTurn은 내부 카운터 값(0부터)이다.
+    public void BeginGame(IMercenary m, int startTurn = 0) {
+        Mercenary = m;
+        CurrentTurn = startTurn;
         CurrentPhase = TurnPhase.Planning;
+
         GameEvents.TurnStarted(CurrentTurn);
+        GameEvents.MercenaryStateChanged(Mercenary);
         GameEvents.PlanningPhaseStart();
     }
-
-    public void SetMercenary(IMercenary m) => Mercenary = m;
 
     // 턴 넘기기 (버튼·키보드 모두 GameEvents.EndTurnRequested를 거쳐 들어온다)
     public void EndPlanningPhase() {

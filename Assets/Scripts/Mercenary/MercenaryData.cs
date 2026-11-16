@@ -28,4 +28,65 @@ public class MercenaryData : IMercenary
     public virtual void AssignAction(ActionDefinition action) { CurrentAction = action; }
     public virtual void OnTurnStart() { }
     public virtual void OnTurnExecute() { }
+
+    // ── 저장·복원 ──
+
+    public MercenarySaveData ToSaveData() {
+        var data = new MercenarySaveData {
+            id = Id,
+            name = Name,
+            stamina = Stamina,
+            strength = Strength,
+            agility = Agility,
+            health = Health,
+            intelligence = Intelligence,
+            charming = Charming,
+            currentHp = CurrentHp,
+            weapon = Loadout?.Weapon != null ? Loadout.Weapon.name : "",
+            grip = Loadout?.Grip ?? GripMode.OneHand,
+        };
+
+        foreach(var action in unlockedActions) {
+            if(action != null) data.unlockedActions.Add(action.name);
+        }
+        if(Loadout != null) {
+            foreach(var pair in Loadout.Levels) {
+                data.proficiencies.Add(new ProficiencyLevelSave { proficiency = pair.Key, level = pair.Value });
+            }
+        }
+        return data;
+    }
+
+    // 저장된 값으로 덮어쓴다. 카탈로그에서 찾지 못한 애셋(이름 변경·삭제)은 경고를 남기고 건너뛴다.
+    protected void ApplySaveData(MercenarySaveData data, ActionCatalog actions, WeaponCatalog weapons) {
+        Id = data.id;
+        Name = data.name;
+        Stamina = data.stamina;
+        Strength = data.strength;
+        Agility = data.agility;
+        Health = data.health;
+        Intelligence = data.intelligence;
+        Charming = data.charming;
+        CurrentHp = System.Math.Clamp(data.currentHp, 0, MaxHp);
+        CurrentAction = null; // 일과는 매 턴 새로 고른다
+
+        unlockedActions.Clear();
+        foreach(var actionName in data.unlockedActions) {
+            var action = actions != null ? actions.FindByName(actionName) : null;
+            if(action != null) unlockedActions.Add(action);
+            else UnityEngine.Debug.LogWarning($"[세이브] 행동 '{actionName}'을(를) 카탈로그에서 찾지 못해 건너뜁니다.");
+        }
+
+        Loadout = null;
+        if(!string.IsNullOrEmpty(data.weapon)) {
+            var weapon = weapons != null ? weapons.FindByName(data.weapon) : null;
+            if(weapon == null) {
+                UnityEngine.Debug.LogWarning($"[세이브] 무기 '{data.weapon}'을(를) 카탈로그에서 찾지 못해 무기 없이 불러옵니다.");
+                return;
+            }
+            var loadout = new WeaponLoadout(weapon, data.grip);
+            foreach(var entry in data.proficiencies) loadout.SetLevel(entry.proficiency, entry.level);
+            Loadout = loadout;
+        }
+    }
 }
