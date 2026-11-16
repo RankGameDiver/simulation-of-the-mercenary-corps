@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // 범용 확인 창: 메시지 + [취소] [확인]. 확인 버튼 문구와 동작은 열 때마다 정한다.
-// (메인 화면의 종료·새로 시작 확인, 이후 출전 확인 창 등에 재사용)
+// (메인 화면의 종료·새로 시작 확인, 게임 메뉴의 타이틀로, 이후 출전 확인 창 등에 재사용)
 public class ConfirmDialog : PanelBase
 {
     [SerializeField] private TextMeshProUGUI messageText;
@@ -16,7 +16,7 @@ public class ConfirmDialog : PanelBase
 
     protected override void Awake() {
         confirmButton.onClick.AddListener(Confirm);
-        cancelButton.onClick.AddListener(Cancel);
+        cancelButton.onClick.AddListener(Close);
         base.Awake();
     }
 
@@ -27,7 +27,8 @@ public class ConfirmDialog : PanelBase
         Show();
     }
 
-    public void Cancel() {
+    // 취소 버튼·Esc 공통: 콜백을 버리고 닫는다
+    public override void Close() {
         _onConfirm = null;
         Hide();
     }

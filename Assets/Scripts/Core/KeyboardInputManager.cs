@@ -23,6 +23,7 @@ public class KeyboardInputManager : MonoBehaviour
     [SerializeField] private Key[] routineKeys = { Key.Digit1, Key.Digit2, Key.Digit3, Key.Digit4 }; // 일과 카드 (카탈로그 순서)
     [SerializeField] private Key[] endTurnKeys = { Key.Space, Key.Enter, Key.NumpadEnter };       // 턴 넘기기
     [SerializeField] private Key growthTabKey = Key.Tab;                                            // 성장 정보 탭 전환
+    [SerializeField] private Key menuKey = Key.Escape;                                              // 열린 창 닫기 / 게임 메뉴
 
     // 런타임에 확정된 매핑
     private readonly List<(Key key, IPanel panel)> _bindings = new();
@@ -47,6 +48,13 @@ public class KeyboardInputManager : MonoBehaviour
     void Update() {
         var keyboard = Keyboard.current;
         if(keyboard == null) return; // 키보드가 없는 환경 방어
+
+        // Esc보다 먼저 확인한다: 같은 프레임에 Esc로 메뉴를 닫으면서 다른 단축키가 새어 나가지 않도록
+        bool modalOpen = PanelBase.AnyModalOpen;
+        if(WasPressed(keyboard, menuKey)) GameEvents.MenuRequested();
+
+        // 메뉴·팝업이 열려 있으면 뒤쪽 게임 화면 단축키를 막는다 (마우스는 팝업의 어두운 배경이 막는다)
+        if(modalOpen) return;
 
         foreach(var (key, panel) in _bindings) {
             if(keyboard[key].wasPressedThisFrame) {

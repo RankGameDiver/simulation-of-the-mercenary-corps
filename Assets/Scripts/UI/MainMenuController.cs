@@ -39,8 +39,7 @@ public class MainMenuController : MonoBehaviour
         var keyboard = Keyboard.current;
         if(keyboard == null || !keyboard.escapeKey.wasPressedThisFrame) return;
 
-        if(confirmDialog.IsVisible) confirmDialog.Cancel();
-        else if(settingsPanel.IsVisible) settingsPanel.Hide();
+        PanelBase.CloseTopModal();
     }
 
     // 세이브를 실제로 읽어 본 뒤 버튼을 켠다 (깨진 세이브로 이어하기를 누르지 않도록)

@@ -15,6 +15,7 @@ public static class GameEvents
     public static event Action OnEndTurnRequested;            // 턴 넘기기
     public static event Action<int> OnRoutineHotkeyPressed;   // 일과 단축키 (0부터 시작하는 카탈로그 순서)
     public static event Action OnGrowthTabCycleRequested;     // 성장 정보 탭 전환
+    public static event Action OnMenuRequested;               // Esc: 열린 창 닫기, 없으면 게임 메뉴 열기
 
     // 전투 관련
     public static event Action OnCombatStarted;
@@ -33,6 +34,7 @@ public static class GameEvents
     public static void EndTurnRequested() => OnEndTurnRequested?.Invoke();
     public static void RoutineHotkeyPressed(int index) => OnRoutineHotkeyPressed?.Invoke(index);
     public static void GrowthTabCycleRequested() => OnGrowthTabCycleRequested?.Invoke();
+    public static void MenuRequested() => OnMenuRequested?.Invoke();
     public static void CombatStarted() => OnCombatStarted?.Invoke();
     public static void CombatEnded(bool playerWon) => OnCombatEnded?.Invoke(playerWon);
     public static void CombatantActed(ICombatant c) => OnCombatantActed?.Invoke(c);
